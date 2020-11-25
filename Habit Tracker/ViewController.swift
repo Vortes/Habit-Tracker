@@ -14,6 +14,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func createNewGoal(_ sender: Any) {
+        self.performSegue(withIdentifier: "goToCreateView", sender: self)
+    }
+    
 }
 
