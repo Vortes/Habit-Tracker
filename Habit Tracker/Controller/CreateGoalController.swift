@@ -7,9 +7,13 @@
 
 import UIKit
 
+protocol CreateGoalDelegate { func didTapSave(name:String) }
+
 class CreateGoalController: UIViewController {
 
     @IBOutlet weak var goalName: UITextField!
+    
+    var habitDelegate: CreateGoalDelegate! 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +22,7 @@ class CreateGoalController: UIViewController {
     
     @IBAction func Save(_ sender: UIButton) {
         print(goalName.text!)
+        habitDelegate.didTapSave(name: goalName.text!)
         dismiss(animated: true, completion: nil)
     }
     
