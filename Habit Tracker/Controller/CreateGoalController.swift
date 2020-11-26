@@ -21,7 +21,6 @@ class CreateGoalController: UIViewController {
     }
     
     @IBAction func Save(_ sender: UIButton) {
-        print(goalName.text!)
         habitDelegate.didTapSave(name: goalName.text!)
         dismiss(animated: true, completion: nil)
     }

@@ -12,6 +12,8 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var tableView: UITableView!
     var userHabitsList: [String] = []
     var userHabitName: String?
+    let cellReuseID = "habitName"
+    let cellSpacingHeight: CGFloat = 15
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,28 +22,56 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     @IBAction func createNewGoal(_ sender: Any) {
-        let goalVC = storyboard?.instantiateViewController(withIdentifier: "habitName") as! CreateGoalController
+        let goalVC = storyboard?.instantiateViewController(withIdentifier: cellReuseID) as! CreateGoalController
         goalVC.habitDelegate = self
         present(goalVC, animated: true, completion: nil)
     }
     
     // Think of how ios settings have different sections w diff spacings
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return userHabitsList.count
+    }
+    
+    // Adjusts cell spacing
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellSpacingHeight
     }
     
     // Allows the table to keep expanding based on how many habits are in the array
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userHabitsList.count
+        return 1
     }
     
-    // Actually puts the words in the table
+    // Make the background color show through
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "habitName")!
-        // indexPath.row allows the cell to use the most recent added habit
-        cell.textLabel?.text = userHabitsList[indexPath.row]
+        
+        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseID)!
+        
+        // note that indexPath.section is used rather than indexPath.row
+        cell.textLabel?.text = userHabitsList[indexPath.section]
+        
+        // add border and color
+        cell.textLabel?.textAlignment = .center
+        cell.backgroundColor = UIColor.white
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.borderWidth = 1.5
+        cell.layer.cornerRadius = 10
+        cell.clipsToBounds = true
+        
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // note that indexPath.section is used rather than indexPath.row
+        print("You tapped cell number \(indexPath.section).")
+    }
+    
 }
 
 extension HomeController: CreateGoalDelegate {
