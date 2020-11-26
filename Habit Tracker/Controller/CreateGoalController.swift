@@ -7,11 +7,15 @@
 
 import UIKit
 
-protocol CreateGoalDelegate { func didTapSave(name:String) }
+protocol CreateGoalDelegate {
+    func didTapSave(name: String, count: String)
+}
 
 class CreateGoalController: UIViewController {
 
     @IBOutlet weak var goalName: UITextField!
+    @IBOutlet weak var habitCount: UITextField!
+    
     
     var habitDelegate: CreateGoalDelegate! 
     
@@ -21,7 +25,7 @@ class CreateGoalController: UIViewController {
     }
     
     @IBAction func Save(_ sender: UIButton) {
-        habitDelegate.didTapSave(name: goalName.text!)
+        habitDelegate.didTapSave(name: goalName.text!, count: habitCount.text!)
         dismiss(animated: true, completion: nil)
     }
     

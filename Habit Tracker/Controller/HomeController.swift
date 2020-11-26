@@ -10,8 +10,10 @@ import UIKit
 class HomeController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    
     var userHabitsList: [String] = []
     var userHabitName: String?
+    var userHabitCount: String?
     let cellReuseID = "habitName"
     let cellSpacingHeight: CGFloat = 15
 
@@ -32,9 +34,14 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         return userHabitsList.count
     }
     
-    // Adjusts cell spacing
+    // Adjusts cell spacing between habits
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return cellSpacingHeight
+    }
+    
+    // Adjust row height
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
     }
     
     // Allows the table to keep expanding based on how many habits are in the array
@@ -55,10 +62,10 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // note that indexPath.section is used rather than indexPath.row
         cell.textLabel?.text = userHabitsList[indexPath.section]
-        
         // add border and color
         cell.textLabel?.textAlignment = .center
-        cell.backgroundColor = UIColor.white
+        cell.backgroundColor = UIColor.blue
+        cell.textLabel?.textColor = UIColor.white
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 1.5
         cell.layer.cornerRadius = 10
@@ -75,8 +82,10 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
 }
 
 extension HomeController: CreateGoalDelegate {
-    func didTapSave(name: String) {
+    func didTapSave(name: String, count: String) {
         userHabitName = name
+        userHabitCount = count
+        print(userHabitCount!)
         userHabitsList.append(name)
         tableView.reloadData()
     }
