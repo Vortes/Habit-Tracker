@@ -16,6 +16,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     var userHabitCount: String?
     let cellReuseID = "habitName"
     let cellSpacingHeight: CGFloat = 15
+    let customRed = UIColor().customBlue()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,11 +64,10 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         // note that indexPath.section is used rather than indexPath.row
         cell.textLabel?.text = userHabitsList[indexPath.section]
         // add border and color
+        cell.textLabel?.font = UIFont(name: "Helvetica Neue Bold", size:25)
         cell.textLabel?.textAlignment = .center
-        cell.backgroundColor = UIColor.blue
+        cell.backgroundColor = customRed
         cell.textLabel?.textColor = UIColor.white
-        cell.layer.borderColor = UIColor.black.cgColor
-        cell.layer.borderWidth = 1.5
         cell.layer.cornerRadius = 10
         cell.clipsToBounds = true
         
@@ -88,5 +88,14 @@ extension HomeController: CreateGoalDelegate {
         print(userHabitCount!)
         userHabitsList.append(name)
         tableView.reloadData()
+    }
+}
+
+extension UIColor {
+    func customRed() -> UIColor {
+        return UIColor(red: 0.607, green: 0.160, blue: 0.282, alpha: 1.00)
+    }
+    func customBlue() -> UIColor {
+        return UIColor(red: 0.509, green: 0.701, blue: 0.964, alpha: 1.00)
     }
 }
