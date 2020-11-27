@@ -11,7 +11,8 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var tableView: UITableView!
     
-    var userHabitsList: [String] = []
+    var UserHabitDict: [String:String] = [:]
+    var userHabitData = [HabitDict]()
     var userHabitName: String?
     var userHabitCount: String?
     let cellReuseID = "habitName"
@@ -32,7 +33,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Think of how ios settings have different sections w diff spacings
     func numberOfSections(in tableView: UITableView) -> Int {
-        return userHabitsList.count
+        return UserHabitDict.count
     }
     
     // Adjusts cell spacing between habits
@@ -60,16 +61,20 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseID)!
-        
-        // note that indexPath.section is used rather than indexPath.row
-        cell.textLabel?.text = userHabitsList[indexPath.section]
+        print("hello")
+        let dictKey = userHabitData[indexPath.section].getName()
+        let dictValue = userHabitData[indexPath.section].getCount()
+        print(dictKey, dictValue)
         // add border and color
-        cell.textLabel?.font = UIFont(name: "Helvetica Neue Bold", size:25)
-        cell.textLabel?.textAlignment = .center
+        cell.textLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 25)
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.lineBreakMode = .byWordWrapping
+//        cell.textLabel?.textAlignment = .center
         cell.backgroundColor = customRed
-        cell.textLabel?.textColor = UIColor.white
+        cell.textLabel?.textColor = UIColor.black
         cell.layer.cornerRadius = 10
         cell.clipsToBounds = true
+        cell.textLabel?.text = "\t\(dictKey)\t\t\t\t\t\t\t\(dictValue)"
         
         return cell
     }
@@ -79,14 +84,19 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         print("You tapped cell number \(indexPath.section).")
     }
     
+    func allowMultipleLines(tableViewCell: UITableViewCell) {
+        tableViewCell.textLabel?.lineBreakMode = .byWordWrapping
+    }
+    
 }
 
 extension HomeController: CreateGoalDelegate {
     func didTapSave(name: String, count: String) {
         userHabitName = name
         userHabitCount = count
-        print(userHabitCount!)
-        userHabitsList.append(name)
+        UserHabitDict[name] = count
+        userHabitData.append(HabitDict(habitName: name, habitCount: count))
+        print(userHabitData[0].getCount())
         tableView.reloadData()
     }
 }
@@ -99,3 +109,25 @@ extension UIColor {
         return UIColor(red: 0.509, green: 0.701, blue: 0.964, alpha: 1.00)
     }
 }
+
+struct HabitDict {
+    let habitName: String
+    let habitCount: String
+    
+    func getName() -> String {
+        return habitName
+    }
+    
+    func getCount() -> String {
+        return habitCount
+    }
+}
+
+
+
+
+
+
+
+
+
