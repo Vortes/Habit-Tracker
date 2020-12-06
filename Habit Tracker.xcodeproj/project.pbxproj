@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E7124259257D7F3E00A94015 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7124258257D7F3E00A94015 /* Habit.swift */; };
 		E7DFCF4D256DF67800854EF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFCF4C256DF67800854EF4 /* AppDelegate.swift */; };
 		E7DFCF4F256DF67800854EF4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFCF4E256DF67800854EF4 /* SceneDelegate.swift */; };
 		E7DFCF51256DF67800854EF4 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFCF50256DF67800854EF4 /* HomeController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E7124258257D7F3E00A94015 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		E7DFCF49256DF67800854EF4 /* Habit Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Habit Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DFCF4C256DF67800854EF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7DFCF4E256DF67800854EF4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 		E7DFCF6A256DF9C400854EF4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E7124258257D7F3E00A94015 /* Habit.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			files = (
 				E7DFCF70256E1C9F00854EF4 /* CreateGoalController.swift in Sources */,
 				E7DFCF51256DF67800854EF4 /* HomeController.swift in Sources */,
+				E7124259257D7F3E00A94015 /* Habit.swift in Sources */,
 				E7DFCF4D256DF67800854EF4 /* AppDelegate.swift in Sources */,
 				E7DFCF4F256DF67800854EF4 /* SceneDelegate.swift in Sources */,
 			);

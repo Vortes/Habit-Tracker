@@ -7,8 +7,25 @@
 
 import UIKit
 
-class HomeController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class tableViewCell: UITableViewCell {
+    @IBOutlet weak var habitName: UILabel!
+    @IBOutlet weak var habitCount: UILabel!
     
+    var habit: Habit? {
+        didSet {
+            self.updateUI()
+        }
+    }
+    
+    func updateUI() {
+        habitName?.text = habit?.title
+        habitCount?.text = habit?.detail
+    }
+    
+}
+
+class HomeController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
     @IBOutlet weak var tableView: UITableView!
     
     var UserHabitDict: [String:String] = [:]
@@ -17,7 +34,8 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     var userHabitCount: String?
     let cellReuseID = "habitName"
     let cellSpacingHeight: CGFloat = 15
-    let customRed = UIColor().customBlue()
+    let customRed = UIColor().customRed()
+    let customBlue = UIColor().customBlue()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,21 +78,13 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseID)!
-        print("hello")
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID) as! tableViewCell
         let dictKey = userHabitData[indexPath.section].getName()
         let dictValue = userHabitData[indexPath.section].getCount()
-        print(dictKey, dictValue)
-        // add border and color
-        cell.textLabel?.font = UIFont(name: "Helvetica Neue Bold", size: 25)
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.lineBreakMode = .byWordWrapping
-//        cell.textLabel?.textAlignment = .center
-        cell.backgroundColor = customRed
-        cell.textLabel?.textColor = UIColor.black
+        cell.backgroundColor = customBlue
         cell.layer.cornerRadius = 10
         cell.clipsToBounds = true
-        cell.textLabel?.text = "\t\(dictKey)\t\t\t\t\t\t\t\(dictValue)"
+        cell.habit = Habit(title: dictKey, detail: dictValue)
         
         return cell
     }
