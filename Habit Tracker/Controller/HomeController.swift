@@ -30,7 +30,7 @@ class tableViewCell: SwipeTableViewCell {
 class HomeController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    
+    let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .heavy)
     var UserHabitDict: [String:String] = [:]
     var userHabitData = [HabitDict]()
     var userHabitName: String?
@@ -48,6 +48,8 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBAction func createNewGoal(_ sender: Any) {
         let goalVC = storyboard?.instantiateViewController(withIdentifier: cellReuseID) as! CreateGoalController
+        impactFeedbackgenerator.prepare()
+        impactFeedbackgenerator.impactOccurred()
         goalVC.habitDelegate = self
         present(goalVC, animated: true, completion: nil)
     }

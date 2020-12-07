@@ -145,6 +145,14 @@
                                     <action selector="Save:" destination="Xyx-yl-B07" eventType="touchUpInside" id="bsS-Or-f5B"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o8c-33-jjq">
+                                <rect key="frame" x="346" y="20" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="Cancel:" destination="Xyx-yl-B07" eventType="touchUpInside" id="jDg-ba-pjU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yKy-4i-3f6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

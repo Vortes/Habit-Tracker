@@ -13,7 +13,7 @@ protocol CreateGoalDelegate {
 }
 
 class CreateGoalController: UIViewController {
-
+    let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .heavy)
     @IBOutlet weak var titleName: CLTypingLabel!
     @IBOutlet weak var goalName: UITextField!
     @IBOutlet weak var habitCount: UITextField!
@@ -28,8 +28,15 @@ class CreateGoalController: UIViewController {
     
     @IBAction func Save(_ sender: UIButton) {
         habitDelegate.didTapSave(name: goalName.text!, count: habitCount.text!)
+        impactFeedbackgenerator.prepare()
+        impactFeedbackgenerator.impactOccurred()
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func Cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
 }
 
