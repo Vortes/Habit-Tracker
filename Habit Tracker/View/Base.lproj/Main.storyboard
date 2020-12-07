@@ -20,7 +20,7 @@
                                 <rect key="frame" x="17" y="44" width="380" height="701"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <rect key="contentStretch" x="0.0" y="0.14999999999999999" width="1" height="1"/>
-                                <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="T A S K S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vr5-aW-wkO">
+                                <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="T A S K S  📖" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vr5-aW-wkO">
                                     <rect key="frame" x="0.0" y="0.0" width="380" height="108"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="28"/>
@@ -100,8 +100,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="C R E A T E" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOQ-LE-sN0">
-                                <rect key="frame" x="66" y="32" width="150" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="C R E A T E  ✍️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOQ-LE-sN0" customClass="CLTypingLabel" customModule="CLTypingLabel">
+                                <rect key="frame" x="66" y="32" width="193" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="28"/>
                                 <nil key="textColor"/>
@@ -134,7 +134,7 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hBY-1R-rP8">
-                                <rect key="frame" x="163" y="650" width="89" height="78"/>
+                                <rect key="frame" x="101" y="730" width="212" height="78"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.32318421754720777" green="0.50858143895057784" blue="0.89735019329896903" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
@@ -152,6 +152,7 @@
                     <connections>
                         <outlet property="goalName" destination="HLO-kE-EQU" id="xot-RM-S5o"/>
                         <outlet property="habitCount" destination="h3I-hW-RzI" id="Dxd-EH-a4i"/>
+                        <outlet property="titleName" destination="vOQ-LE-sN0" id="27g-g1-AFc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjY-Ep-D39" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -159,6 +160,11 @@
             <point key="canvasLocation" x="630.43478260869574" y="93.75"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="vOQ-LE-sN0">
+            <size key="intrinsicContentSize" width="193" height="33.5"/>
+        </designable>
+    </designables>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CLTypingLabel
 
 protocol CreateGoalDelegate {
     func didTapSave(name: String, count: String)
@@ -13,15 +14,16 @@ protocol CreateGoalDelegate {
 
 class CreateGoalController: UIViewController {
 
+    @IBOutlet weak var titleName: CLTypingLabel!
     @IBOutlet weak var goalName: UITextField!
     @IBOutlet weak var habitCount: UITextField!
-    
     
     var habitDelegate: CreateGoalDelegate! 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         goalName.delegate = self
+        titleName.text = "C R E A T E  ✍️"
     }
     
     @IBAction func Save(_ sender: UIButton) {

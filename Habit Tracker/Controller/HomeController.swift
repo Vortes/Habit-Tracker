@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class tableViewCell: UITableViewCell {
+class tableViewCell: SwipeTableViewCell {
     @IBOutlet weak var habitName: UILabel!
     @IBOutlet weak var habitCount: UILabel!
     
@@ -83,6 +84,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID) as! tableViewCell
         let dictKey = userHabitData[indexPath.section].getName()
         let dictValue = userHabitData[indexPath.section].getCount()
+        cell.delegate = self
         cell.backgroundColor = customBlue
         cell.layer.cornerRadius = 10
         cell.clipsToBounds = true
@@ -94,9 +96,14 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // note that indexPath.section is used rather than indexPath.row
         print("You tapped cell number \(indexPath.section).")
-        var dictValue = userHabitData[indexPath.section].getCount()
-        dictValue = String(Int(dictValue)! - 1)
-        tableView.reloadData()
+//        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID) as! tableViewCell
+//        let dictKey = userHabitData[indexPath.section].getName()
+//        var dictValue = userHabitData[indexPath.section].getCount()
+//        print("over here")
+//        dictValue = String(Int(dictValue)! - 1)
+//        print(dictValue)
+//        cell.habit = Habit(title: dictKey, detail: dictValue)
+//        tableView.reloadData()
     }
     
     func allowMultipleLines(tableViewCell: UITableViewCell) {
@@ -138,7 +145,20 @@ struct HabitDict {
     }
 }
 
+extension HomeController: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
 
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            print("Deleted")
+        }
+
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete-icon")
+
+        return [deleteAction]
+    }
+}
 
 
 
