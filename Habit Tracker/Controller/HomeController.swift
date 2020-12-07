@@ -11,6 +11,7 @@ class tableViewCell: UITableViewCell {
     @IBOutlet weak var habitName: UILabel!
     @IBOutlet weak var habitCount: UILabel!
     
+    
     var habit: Habit? {
         didSet {
             self.updateUI()
@@ -20,6 +21,7 @@ class tableViewCell: UITableViewCell {
     func updateUI() {
         habitName?.text = habit?.title
         habitCount?.text = habit?.detail
+//        progressLabel?.observedProgress = habit?.progress
     }
     
 }
@@ -92,6 +94,9 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // note that indexPath.section is used rather than indexPath.row
         print("You tapped cell number \(indexPath.section).")
+        var dictValue = userHabitData[indexPath.section].getCount()
+        dictValue = String(Int(dictValue)! - 1)
+        tableView.reloadData()
     }
     
     func allowMultipleLines(tableViewCell: UITableViewCell) {
