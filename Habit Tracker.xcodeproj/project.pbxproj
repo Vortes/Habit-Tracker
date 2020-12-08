@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		A901D0E039C980AC95F0C8D7 /* Pods_Habit_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8756683383D4C9792664729A /* Pods_Habit_Tracker.framework */; };
 		E7124259257D7F3E00A94015 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7124258257D7F3E00A94015 /* Habit.swift */; };
+		E751E3B3257F4B26008BEB5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E751E3B2257F4B26008BEB5F /* Assets.xcassets */; };
 		E7DFCF4D256DF67800854EF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFCF4C256DF67800854EF4 /* AppDelegate.swift */; };
 		E7DFCF4F256DF67800854EF4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFCF4E256DF67800854EF4 /* SceneDelegate.swift */; };
 		E7DFCF51256DF67800854EF4 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFCF50256DF67800854EF4 /* HomeController.swift */; };
 		E7DFCF54256DF67800854EF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DFCF52256DF67800854EF4 /* Main.storyboard */; };
-		E7DFCF56256DF67900854EF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7DFCF55256DF67900854EF4 /* Assets.xcassets */; };
 		E7DFCF59256DF67900854EF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DFCF57256DF67900854EF4 /* LaunchScreen.storyboard */; };
 		E7DFCF70256E1C9F00854EF4 /* CreateGoalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFCF6F256E1C9F00854EF4 /* CreateGoalController.swift */; };
 /* End PBXBuildFile section */
@@ -23,12 +23,12 @@
 		8756683383D4C9792664729A /* Pods_Habit_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habit_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		963D75F57BD073991C15C9B7 /* Pods-Habit Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habit Tracker.release.xcconfig"; path = "Target Support Files/Pods-Habit Tracker/Pods-Habit Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		E7124258257D7F3E00A94015 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		E751E3B2257F4B26008BEB5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../../Downloads/AppIcons/Assets.xcassets; sourceTree = "<group>"; };
 		E7DFCF49256DF67800854EF4 /* Habit Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Habit Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DFCF4C256DF67800854EF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7DFCF4E256DF67800854EF4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E7DFCF50256DF67800854EF4 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		E7DFCF53256DF67800854EF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E7DFCF55256DF67900854EF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7DFCF58256DF67900854EF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7DFCF5A256DF67900854EF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7DFCF6F256E1C9F00854EF4 /* CreateGoalController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGoalController.swift; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 				E7DFCF68256DF9B100854EF4 /* Controller */,
 				E7DFCF4C256DF67800854EF4 /* AppDelegate.swift */,
 				E7DFCF4E256DF67800854EF4 /* SceneDelegate.swift */,
-				E7DFCF55256DF67900854EF4 /* Assets.xcassets */,
+				E751E3B2257F4B26008BEB5F /* Assets.xcassets */,
 				E7DFCF57256DF67900854EF4 /* LaunchScreen.storyboard */,
 				E7DFCF5A256DF67900854EF4 /* Info.plist */,
 			);
@@ -181,7 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7DFCF59256DF67900854EF4 /* LaunchScreen.storyboard in Resources */,
-				E7DFCF56256DF67900854EF4 /* Assets.xcassets in Resources */,
+				E751E3B3257F4B26008BEB5F /* Assets.xcassets in Resources */,
 				E7DFCF54256DF67800854EF4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

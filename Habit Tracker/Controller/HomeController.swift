@@ -96,8 +96,10 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // note that indexPath.section is used rather than indexPath.row
-        print("You tapped cell number \(indexPath.section).")
+//        print("You tapped cell number \(indexPath.section).")
 //        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID) as! tableViewCell
+//		cell.habit?.updateDetail()
+//		tableView.reloadData()
 //        let dictKey = userHabitData[indexPath.section].getName()
 //        var dictValue = userHabitData[indexPath.section].getCount()
 //        print("over here")
@@ -105,6 +107,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
 //        print(dictValue)
 //        cell.habit = Habit(title: dictKey, detail: dictValue)
 //        tableView.reloadData()
+		
     }
     
     func allowMultipleLines(tableViewCell: UITableViewCell) {
