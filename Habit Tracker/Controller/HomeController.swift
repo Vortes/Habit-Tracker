@@ -89,7 +89,6 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.delegate = self
         cell.backgroundColor = customBlue
         cell.layer.cornerRadius = 10
-        cell.clipsToBounds = true
         cell.habit = Habit(title: dictKey, detail: dictValue)
         
         return cell
@@ -120,7 +119,7 @@ extension HomeController: CreateGoalDelegate {
         userHabitCount = count
         UserHabitDict[name] = count
         userHabitData.append(HabitDict(habitName: name, habitCount: count))
-        print(userHabitData[0].getCount())
+//        print(userHabitData[0].getCount())
         tableView.reloadData()
     }
 }
@@ -156,7 +155,7 @@ extension HomeController: SwipeTableViewCellDelegate {
         }
 
         // customize the action appearance
-        deleteAction.image = UIImage(named: "delete-icon")
+        deleteAction.image = UIImage(named: "delete")
 
         return [deleteAction]
     }
