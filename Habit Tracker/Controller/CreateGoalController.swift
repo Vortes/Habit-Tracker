@@ -16,7 +16,9 @@ class CreateGoalController: UIViewController {
     let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .heavy)
     @IBOutlet weak var titleName: CLTypingLabel!
     @IBOutlet weak var goalName: UITextField!
-    @IBOutlet weak var habitCount: UITextField!
+	@IBOutlet weak var button: UIButton!
+	@IBOutlet weak var habitCount: UITextField!
+	
     
     var habitDelegate: CreateGoalDelegate! 
     
@@ -24,6 +26,7 @@ class CreateGoalController: UIViewController {
         super.viewDidLoad()
         goalName.delegate = self
         titleName.text = "C R E A T E  ✍️"
+		button.layer.cornerRadius = 30
     }
     
     @IBAction func Save(_ sender: UIButton) {
@@ -36,8 +39,6 @@ class CreateGoalController: UIViewController {
     @IBAction func Cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
-    
 }
 
 extension UIViewController: UITextFieldDelegate {

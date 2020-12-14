@@ -8,7 +8,7 @@
 import UIKit
 import SwipeCellKit
 
-class tableViewCell: SwipeTableViewCell {
+class tableViewCell: UITableViewCell {
     @IBOutlet weak var habitName: UILabel!
     @IBOutlet weak var habitCount: UILabel!
     
@@ -20,6 +20,7 @@ class tableViewCell: SwipeTableViewCell {
     }
     
     func updateUI() {
+		print("being run")
         habitName?.text = habit?.title
         habitCount?.text = habit?.detail
 //        progressLabel?.observedProgress = habit?.progress
@@ -29,8 +30,10 @@ class tableViewCell: SwipeTableViewCell {
 
 class HomeController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var deno_label: UILabel!
+	@IBOutlet weak var tableView: UITableView!
     let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .heavy)
+	@IBOutlet weak var deno_img: UIImageView!
     var UserHabitDict: [String:String] = [:]
     var userHabitData = [HabitDict]()
     var userHabitName: String?
@@ -38,12 +41,18 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     let cellReuseID = "habitName"
     let cellSpacingHeight: CGFloat = 15
     let customRed = UIColor().customRed()
-    let customBlue = UIColor().customBlue()
+	let customBlue = UIColor().customBlue()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+//		let indexSet = IndexSet(integer: userHabitData.count)
+//		userHabitData.append(HabitDict(habitName: "", habitCount: ""))
+//		DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+//			self.userHabitData.removeAll()
+//			self.tableView.deleteSections(indexSet, with: .fade)
+//		}
     }
 
     @IBAction func createNewGoal(_ sender: Any) {
@@ -56,7 +65,8 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Think of how ios settings have different sections w diff spacings
     func numberOfSections(in tableView: UITableView) -> Int {
-        return UserHabitDict.count
+		print("userHabitData: \(userHabitData.count)")
+		return userHabitData.count
     }
     
     // Adjusts cell spacing between habits
@@ -66,10 +76,10 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Adjust row height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        return 85
     }
     
-    // Allows the table to keep expanding based on how many habits are in the array
+    // for every section return 1 row
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -82,17 +92,39 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+		if habitIsEmpty() {
+			deno_img.alpha = 0.0
+			deno_label.alpha = 0.0
+		}
+		print("making habit")
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID) as! tableViewCell
         let dictKey = userHabitData[indexPath.section].getName()
         let dictValue = userHabitData[indexPath.section].getCount()
-        cell.delegate = self
+//        cell.delegate = self
         cell.backgroundColor = customBlue
         cell.layer.cornerRadius = 10
         cell.habit = Habit(title: dictKey, detail: dictValue)
-        
+		print("userHabitData in making habit: \(userHabitData.count)")
         return cell
     }
+	
+//	func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+//		var options = SwipeOptions()
+//		options.expansionStyle = .destructive
+//		options.transitionStyle = .border
+//		return options
+//	}
+	
+	func tableView(_ tableView: UITableView,
+				   commit editingStyle: UITableViewCell.EditingStyle,
+				   forRowAt indexPath: IndexPath) {
+		if editingStyle == .delete {
+			let indexSet = IndexSet(integer: userHabitData.count - 1)
+			userHabitData.remove(at: indexPath.section)
+			tableView.deleteSections(indexSet, with: .fade)
+			// Perform any follow up actions here
+		}
+	}
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // note that indexPath.section is used rather than indexPath.row
@@ -110,20 +142,32 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
 		
     }
     
-    func allowMultipleLines(tableViewCell: UITableViewCell) {
-        tableViewCell.textLabel?.lineBreakMode = .byWordWrapping
-    }
+//    func allowMultipleLines(tableViewCell: UITableViewCell) {
+//        tableViewCell.textLabel?.lineBreakMode = .byWordWrapping
+//    }
+	
+	func habitIsEmpty() -> Bool {
+		if userHabitData.isEmpty {
+			return false
+		} else {
+			return true
+		}
+	}
     
 }
 
 extension HomeController: CreateGoalDelegate {
     func didTapSave(name: String, count: String) {
+		print("inserting sections")
         userHabitName = name
         userHabitCount = count
         UserHabitDict[name] = count
         userHabitData.append(HabitDict(habitName: name, habitCount: count))
-//        print(userHabitData[0].getCount())
-        tableView.reloadData()
+		let indexSet = IndexSet(integer: userHabitData.count - 1)
+		tableView.insertSections(indexSet, with: .right)
+		print("userHabitData in inserting sections: \(userHabitData.count)")
+//		self.userHabitData.remove(at: 0)
+//		self.tableView.deleteSections(indexSet, with: .fade)
     }
 }
 
@@ -149,20 +193,24 @@ struct HabitDict {
     }
 }
 
-extension HomeController: SwipeTableViewCellDelegate {
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == .right else { return nil }
-
-        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-            print("Deleted")
-        }
-
-        // customize the action appearance
-        deleteAction.image = UIImage(named: "delete")
-
-        return [deleteAction]
-    }
-}
+//extension HomeController: SwipeTableViewCellDelegate {
+//	func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+//        guard orientation == .right else { return nil }
+//
+////		let indexSet = IndexSet(integer: userHabitData.count - 1)
+////		print("in delete")
+//		let deleteAction = SwipeAction(style: .destructive, title: "Delete") { [self] action, indexPath in
+////			print("currently deleting")
+////			userHabitData.remove(at: indexPath.section)
+////			tableView.deleteSections(indexSet, with: .fade)
+//        }
+////
+////        // customize the action appearance
+////        deleteAction.image = UIImage(named: "delete")
+////
+//        return [deleteAction]
+//    }
+//}
 
 
 
