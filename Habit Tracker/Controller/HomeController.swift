@@ -49,7 +49,6 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-		print(dataFilePath)
 		loadItems()
     }
 
