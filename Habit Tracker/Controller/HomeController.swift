@@ -115,14 +115,12 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
 //		return options
 //	}
 	
-	func tableView(_ tableView: UITableView,
-				   commit editingStyle: UITableViewCell.EditingStyle,
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
 				   forRowAt indexPath: IndexPath) {
 		if editingStyle == .delete {
-			let indexSet = IndexSet(integer: userHabitData.count - 1)
+			let indexSet = IndexSet(arrayLiteral: indexPath.section)
 			userHabitData.remove(at: indexPath.section)
 			tableView.deleteSections(indexSet, with: .fade)
-			// Perform any follow up actions here
 		}
 	}
     
