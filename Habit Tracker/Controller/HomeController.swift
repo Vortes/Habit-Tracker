@@ -42,17 +42,15 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     let cellSpacingHeight: CGFloat = 15
     let customRed = UIColor().customRed()
 	let customBlue = UIColor().customBlue()
-	let defaults = UserDefaults.standard
+	
+	let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("habits.plist")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-		
-		if let items = defaults.array(forKey: "habitKey") as? [HabitDict] {
-			userHabitData = items
-		}
-		
+		print(dataFilePath)
+		loadItems()
     }
 
     @IBAction func createNewGoal(_ sender: Any) {
@@ -109,6 +107,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
 		if editingStyle == .delete {
 			let indexSet = IndexSet(arrayLiteral: indexPath.section)
 			userHabitData.remove(at: indexPath.section)
+			saveItem()
 			tableView.deleteSections(indexSet, with: .fade)
 			if !habitIsEmpty() {
 				deno_img.alpha = 0.4
@@ -132,6 +131,28 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
 			return true
 		}
 	}
+	
+	func saveItem() {
+		let encoder = PropertyListEncoder()
+		
+		do {
+			let data = try encoder.encode(userHabitData)
+			try data.write(to: dataFilePath!)
+		} catch {
+			print("error encoding array \(error)")
+		}
+	}
+	
+	func loadItems() {
+		if let data = try? Data(contentsOf: dataFilePath!) {
+			let decoder = PropertyListDecoder()
+			do {
+				userHabitData = try decoder.decode([HabitDict].self, from: data)
+			} catch {
+				print("Error decoding array \(error)")
+			}
+		}
+	}
     
 }
 
@@ -142,8 +163,10 @@ extension HomeController: CreateGoalDelegate {
         userHabitCount = count
         UserHabitDict[name] = count
         userHabitData.append(HabitDict(habitName: name, habitCount: count))
+		
+		saveItem()
+		
 		let indexSet = IndexSet(integer: userHabitData.count - 1)
-		defaults.set(userHabitData, forKey: "habitKey")
 		tableView.insertSections(indexSet, with: .right)
 		print("userHabitData in inserting sections: \(userHabitData.count)")
     }
@@ -158,7 +181,7 @@ extension UIColor {
     }
 }
 
-struct HabitDict {
+struct HabitDict: Codable {
     let habitName: String
     let habitCount: String
     
@@ -170,3 +193,4 @@ struct HabitDict {
         return habitCount
     }
 }
+
