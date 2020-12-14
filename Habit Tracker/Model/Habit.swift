@@ -6,20 +6,17 @@
 //
 
 import UIKit
+import RealmSwift
 
-class Habit {
-    var title: String
-    var detail: String
-//    var progress: Progress
-    
-    init(title: String, detail: String) {
-        self.title = title
-        self.detail = detail
-//        self.progress = progress
-    }
-    
-    func updateDetail() -> Int {
-        return Int(detail)! - 1
-    }
-    
+class Habit: Object {
+	@objc dynamic var title: String = ""
+	@objc dynamic var detail: String = ""
+	
+//	init(title: String, detail: String) {
+//		self.title = title
+//		self.detail = detail
+//	}
+	
+	let habitDetails = List<HabitDetail>()
+	
 }

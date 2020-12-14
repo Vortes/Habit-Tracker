@@ -7,43 +7,22 @@
 
 import UIKit
 import SwipeCellKit
-
-class tableViewCell: UITableViewCell {
-    @IBOutlet weak var habitName: UILabel!
-    @IBOutlet weak var habitCount: UILabel!
-    
-    
-    var habit: Habit? {
-        didSet {
-            self.updateUI()
-        }
-    }
-    
-    func updateUI() {
-		print("being run")
-        habitName?.text = habit?.title
-        habitCount?.text = habit?.detail
-//        progressLabel?.observedProgress = habit?.progress
-    }
-    
-}
+import RealmSwift
 
 class HomeController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
 	@IBOutlet weak var deno_label: UILabel!
 	@IBOutlet weak var tableView: UITableView!
-    let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .heavy)
 	@IBOutlet weak var deno_img: UIImageView!
-    var UserHabitDict: [String:String] = [:]
-    var userHabitData = [HabitDict]()
-    var userHabitName: String?
-    var userHabitCount: String?
+	
+	let realm = try! Realm()
+	
+	var habitData: Results<Habit>?
+	let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .heavy)
     let cellReuseID = "habitName"
     let cellSpacingHeight: CGFloat = 15
     let customRed = UIColor().customRed()
 	let customBlue = UIColor().customBlue()
-	
-	let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("habits.plist")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +41,14 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Think of how ios settings have different sections w diff spacings
     func numberOfSections(in tableView: UITableView) -> Int {
-		return userHabitData.count
+		if habitData?.count ?? 0 == 0 {
+			deno_img.alpha = 0.4
+			deno_label.alpha = 0.4
+		} else {
+			deno_img.alpha = 0.0
+			deno_label.alpha = 0.0
+		}
+		return habitData?.count ?? 0
     }
     
     // Adjusts cell spacing between habits
@@ -88,32 +74,18 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if habitIsEmpty() {
-			deno_img.alpha = 0.0
-			deno_label.alpha = 0.0
-		}
+//		if habitIsEmpty() {
+//			deno_img.alpha = 0.0
+//			deno_label.alpha = 0.0
+//		}
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID) as! tableViewCell
-        let dictKey = userHabitData[indexPath.section].getName()
-        let dictValue = userHabitData[indexPath.section].getCount()
+		cell.delegate = self
         cell.backgroundColor = customBlue
         cell.layer.cornerRadius = 10
-        cell.habit = Habit(title: dictKey, detail: dictValue)
+		cell.habit = habitData?[indexPath.section]
+		
         return cell
     }
-	
-	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
-				   forRowAt indexPath: IndexPath) {
-		if editingStyle == .delete {
-			let indexSet = IndexSet(arrayLiteral: indexPath.section)
-			userHabitData.remove(at: indexPath.section)
-			saveItem()
-			tableView.deleteSections(indexSet, with: .fade)
-			if !habitIsEmpty() {
-				deno_img.alpha = 0.4
-				deno_label.alpha = 0.4
-			}
-		}
-	}
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
@@ -123,51 +95,40 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableViewCell.textLabel?.lineBreakMode = .byWordWrapping
     }
 	
-	func habitIsEmpty() -> Bool {
-		if userHabitData.isEmpty {
-			return false
-		} else {
-			return true
-		}
-	}
+//	func habitIsEmpty() -> Bool {
+//		if habitData?.isEmpty {
+//			return false
+//		} else {
+//			return true
+//		}
+//	}
 	
-	func saveItem() {
-		let encoder = PropertyListEncoder()
-		
+	func save(habit: Habit) {
 		do {
-			let data = try encoder.encode(userHabitData)
-			try data.write(to: dataFilePath!)
+			try realm.write {
+				realm.add(habit)
+			}
 		} catch {
-			print("error encoding array \(error)")
+			print("saving error \(error)")
 		}
 	}
 	
 	func loadItems() {
-		if let data = try? Data(contentsOf: dataFilePath!) {
-			let decoder = PropertyListDecoder()
-			do {
-				userHabitData = try decoder.decode([HabitDict].self, from: data)
-			} catch {
-				print("Error decoding array \(error)")
-			}
-		}
+		habitData = realm.objects(Habit.self)
 	}
-    
+
 }
 
 extension HomeController: CreateGoalDelegate {
     func didTapSave(name: String, count: String) {
 		print("inserting sections")
-        userHabitName = name
-        userHabitCount = count
-        UserHabitDict[name] = count
-        userHabitData.append(HabitDict(habitName: name, habitCount: count))
 		
-		saveItem()
-		
-		let indexSet = IndexSet(integer: userHabitData.count - 1)
-		tableView.insertSections(indexSet, with: .right)
-		print("userHabitData in inserting sections: \(userHabitData.count)")
+		let newHabit = Habit()
+		newHabit.title = name
+		newHabit.detail = count
+
+		save(habit: newHabit)
+		tableView.reloadData()
     }
 }
 
@@ -180,16 +141,53 @@ extension UIColor {
     }
 }
 
-struct HabitDict: Codable {
-    let habitName: String
-    let habitCount: String
-    
-    func getName() -> String {
-        return habitName
-    }
-    
-    func getCount() -> String {
-        return habitCount
-    }
+class tableViewCell: SwipeTableViewCell {
+	@IBOutlet weak var habitName: UILabel!
+	@IBOutlet weak var habitCount: UILabel!
+	
+	var habit: Habit? {
+		didSet {
+			self.updateUI()
+		}
+	}
+	
+	func updateUI() {
+		habitName?.text = habit?.title
+		habitCount?.text = habit?.detail
+	}
+	
 }
 
+
+extension HomeController: SwipeTableViewCellDelegate {
+	func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+		guard orientation == .right else { return nil }
+
+		let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+			if let habitForDeletion = self.habitData?[indexPath.section] {
+				do {
+					try self.realm.write {
+						self.realm.delete(habitForDeletion)
+					}
+				} catch {
+					print("error deleting \(error)")
+				}
+				tableView.reloadData()
+			}
+		}
+
+		// customize the action appearance
+		deleteAction.image = UIImage(named: "delete")
+
+		return [deleteAction]
+	}
+	
+//	func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+//		var options = SwipeOptions()
+//		print("here")
+//		options.expansionStyle = .destructive
+//		options.transitionStyle = .border
+//		return options
+//	}
+	
+}
