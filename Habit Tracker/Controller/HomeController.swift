@@ -18,7 +18,9 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
 	let realm = try! Realm()
 	
 	var habitData: Results<Habit>?
-	let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .heavy)
+	
+	let impactHard = UIImpactFeedbackGenerator(style: .heavy)
+	let impactMedium = UIImpactFeedbackGenerator(style: .medium)
     let cellReuseID = "habitName"
     let cellSpacingHeight: CGFloat = 15
     let customRed = UIColor().customRed()
@@ -33,14 +35,15 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBAction func createNewGoal(_ sender: Any) {
         let goalVC = storyboard?.instantiateViewController(withIdentifier: cellReuseID) as! CreateGoalController
-        impactFeedbackgenerator.prepare()
-        impactFeedbackgenerator.impactOccurred()
+        impactHard.prepare()
+        impactHard.impactOccurred()
         goalVC.habitDelegate = self
         present(goalVC, animated: true, completion: nil)
     }
     
     // Think of how ios settings have different sections w diff spacings
     func numberOfSections(in tableView: UITableView) -> Int {
+		
 		if habitData?.count ?? 0 == 0 {
 			deno_img.alpha = 0.4
 			deno_label.alpha = 0.4
@@ -48,6 +51,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
 			deno_img.alpha = 0.0
 			deno_label.alpha = 0.0
 		}
+		
 		return habitData?.count ?? 0
     }
     
@@ -74,34 +78,31 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//		if habitIsEmpty() {
-//			deno_img.alpha = 0.0
-//			deno_label.alpha = 0.0
-//		}
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID) as! tableViewCell
 		cell.delegate = self
         cell.backgroundColor = customBlue
-        cell.layer.cornerRadius = 10
+//        cell.layer.cornerRadius = 10
 		cell.habit = habitData?[indexPath.section]
 		
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		
+		performSegue(withIdentifier: "habitDetails", sender: self)
     }
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		let destinationVC = segue.destination as! HabitDetailController
+		
+		if let indexPath = tableView.indexPathForSelectedRow {
+			destinationVC.selectedHabit = habitData?[indexPath.section]
+		}
+	}
+
     
     func allowMultipleLines(tableViewCell: UITableViewCell) {
         tableViewCell.textLabel?.lineBreakMode = .byWordWrapping
     }
-	
-//	func habitIsEmpty() -> Bool {
-//		if habitData?.isEmpty {
-//			return false
-//		} else {
-//			return true
-//		}
-//	}
 	
 	func save(habit: Habit) {
 		do {
@@ -163,11 +164,13 @@ extension HomeController: SwipeTableViewCellDelegate {
 	func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
 		guard orientation == .right else { return nil }
 
-		let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+		let deleteAction = SwipeAction(style: .destructive, title: "") { action, indexPath in
 			if let habitForDeletion = self.habitData?[indexPath.section] {
 				do {
 					try self.realm.write {
 						self.realm.delete(habitForDeletion)
+						self.impactMedium.prepare()
+						self.impactMedium.impactOccurred()
 					}
 				} catch {
 					print("error deleting \(error)")
@@ -181,10 +184,9 @@ extension HomeController: SwipeTableViewCellDelegate {
 
 		return [deleteAction]
 	}
-	
+//
 //	func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
 //		var options = SwipeOptions()
-//		print("here")
 //		options.expansionStyle = .destructive
 //		options.transitionStyle = .border
 //		return options

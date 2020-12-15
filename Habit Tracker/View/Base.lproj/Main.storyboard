@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GW4-Oa-Dwk">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
@@ -8,6 +8,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="kxv-fs-Zp7">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="GW4-Oa-Dwk" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CDP-nm-HjB">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="nOK-Df-rOg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sCX-8p-Y08" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-999" y="128"/>
+        </scene>
         <!--Home Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -28,7 +44,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="habitName" textLabel="lyX-OE-eXN" detailTextLabel="HYy-54-aET" rowHeight="103" style="IBUITableViewCellStyleValue1" id="8Bl-hx-Pkt" customClass="tableViewCell" customModule="Habit_Tracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="habitName" textLabel="lyX-OE-eXN" detailTextLabel="HYy-54-aET" rowHeight="103" style="IBUITableViewCellStyleValue1" id="8Bl-hx-Pkt" customClass="tableViewCell" customModule="Habit_Tracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="136" width="380" height="103"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Bl-hx-Pkt" id="VN6-yL-yem">
@@ -94,16 +110,18 @@
                             <constraint firstItem="yRg-lw-UJv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q5t-Wg-ceg"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="5QW-m1-apD"/>
                     <connections>
                         <outlet property="deno_img" destination="tBe-JJ-VtQ" id="edp-7T-nYt"/>
                         <outlet property="deno_label" destination="zsR-fV-k7e" id="Q4K-jd-341"/>
                         <outlet property="tableView" destination="yRg-lw-UJv" id="Agt-R8-RnH"/>
                         <segue destination="Xyx-yl-B07" kind="presentation" identifier="goToCreateView" id="XN3-NG-k8p"/>
+                        <segue destination="oO1-sx-Mfs" kind="show" identifier="habitDetails" id="pQD-ct-YDO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-159.42028985507247" y="93.75"/>
+            <point key="canvasLocation" x="-186" y="128"/>
         </scene>
         <!--Create Goal Controller-->
         <scene sceneID="VkR-BU-Wxp">
@@ -179,7 +197,40 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjY-Ep-D39" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="630.43478260869574" y="93.75"/>
+            <point key="canvasLocation" x="735" y="-199"/>
+        </scene>
+        <!--Habit Detail Controller-->
+        <scene sceneID="ESw-LE-eeF">
+            <objects>
+                <viewController id="oO1-sx-Mfs" customClass="HabitDetailController" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nib-xe-FH3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hello world" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFb-l4-8C2">
+                                <rect key="frame" x="154" y="116" width="107" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRI-Pa-llV">
+                                <rect key="frame" x="323" y="64" width="48" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButton:" destination="oO1-sx-Mfs" eventType="touchUpInside" id="f1T-zd-HTl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="WtA-pG-IDm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NB8-hk-2eP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Xg-r1-qsy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="734.78260869565224" y="496.875"/>
         </scene>
     </scenes>
     <designables>
