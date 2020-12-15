@@ -11,6 +11,7 @@ import RealmSwift
 class Habit: Object {
 	@objc dynamic var title: String = ""
 	@objc dynamic var detail: String = ""
+	@objc dynamic var progress: Float = 0.0
 	
 //	init(title: String, detail: String) {
 //		self.title = title

@@ -30,6 +30,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+		print(Realm.Configuration.defaultConfiguration.fileURL!)
 		loadItems()
     }
 
@@ -81,13 +82,16 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID) as! tableViewCell
 		cell.delegate = self
         cell.backgroundColor = customBlue
-//        cell.layer.cornerRadius = 10
+        cell.layer.cornerRadius = 10
 		cell.habit = habitData?[indexPath.section]
 		
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//		try! realm.write {
+//			habitData?[indexPath.section].progress += 1.1
+//		}
 		performSegue(withIdentifier: "habitDetails", sender: self)
     }
 	
