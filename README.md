@@ -1,2 +1,2 @@
 # Habit-Tracker
-app that tracks your habits
+A minimalistic habit tracker and builder app.
