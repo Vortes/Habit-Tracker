@@ -18,21 +18,24 @@ class HabitDetailController: UIViewController {
 	var habitData = Habit()
 	let habitDetails = HabitDetail()
 	let realm = try! Realm()
-	var selectedHabit: Habit? 
+	var selectedHabit: Habit?
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
 		userHabitCount.text = String(selectedHabit!.userCount)
-		habitName.text = selectedHabit?.title ?? "Habit Name"
-		habitCount.text = "\(selectedHabit?.totalCount ?? "0")"
+		habitName.text = selectedHabit!.title
+		habitCount.text = selectedHabit!.totalCount
 		habitProgress.progress = Float(Float(Float(selectedHabit!.userCount)/Float(selectedHabit!.totalCount)!))
     }
 	
 	@IBAction func addButton(_ sender: Any) {
 		do {
 			try realm.write {
-				selectedHabit!.userCount += 1
+				if selectedHabit!.userCount == Int(selectedHabit!.totalCount) {
+					selectedHabit!.userCount += 1
+				} else {
+					selectedHabit!.userCount += 1
+				}
 			}
 		} catch {
 			print(error)
@@ -45,9 +48,8 @@ class HabitDetailController: UIViewController {
 	@IBAction func minusButton(_ sender: Any) {
 		do {
 			try realm.write {
-				if selectedHabit!.userCount <= 0 {
-					
-				} else {
+				if selectedHabit!.userCount <= 0 {}
+				else {
 					selectedHabit!.userCount -= 1
 				}
 			}
@@ -62,7 +64,4 @@ class HabitDetailController: UIViewController {
 	@IBAction func cancelButton(_ sender: Any) {
 		self.navigationController?.popToRootViewController(animated: true)
 	}
-	
-	
-
 }
