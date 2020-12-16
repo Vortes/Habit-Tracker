@@ -10,7 +10,8 @@ import RealmSwift
 
 class Habit: Object {
 	@objc dynamic var title: String = ""
-	@objc dynamic var detail: String = ""
+	@objc dynamic var totalCount: String = ""
+	@objc dynamic var userCount: Int =  0
 	@objc dynamic var progress: Float = 0.0
 	
 //	init(title: String, detail: String) {

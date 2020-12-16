@@ -11,25 +11,53 @@ import RealmSwift
 class HabitDetailController: UIViewController {
 	
 	@IBOutlet weak var habitName: UILabel!
-//	var habitDetailData: Results<HabitDetail>?
+	@IBOutlet weak var habitCount: UILabel!
+	@IBOutlet weak var userHabitCount: UILabel!
+	@IBOutlet weak var habitProgress: UIProgressView!
+
 	var habitData = Habit()
 	let habitDetails = HabitDetail()
-	let habit = Habit()
 	let realm = try! Realm()
 	var selectedHabit: Habit? 
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		print(habitData.progress)
-		habitName.text = String(selectedHabit?.progress ?? 0)
-//		loadItems()
+		
+		userHabitCount.text = String(selectedHabit!.userCount)
+		habitName.text = selectedHabit?.title ?? "Habit Name"
+		habitCount.text = "\(selectedHabit?.totalCount ?? "0")"
+		habitProgress.progress = Float(Float(Float(selectedHabit!.userCount)/Float(selectedHabit!.totalCount)!))
     }
 	
-//	func loadDetail() {}
-//	
-//	func loadItems() {
-//		habitData = realm.objects(Habit.self)
-//	}
+	@IBAction func addButton(_ sender: Any) {
+		do {
+			try realm.write {
+				selectedHabit!.userCount += 1
+			}
+		} catch {
+			print(error)
+		}
+		
+		habitProgress.progress = Float(Float(Float(selectedHabit!.userCount)/Float(selectedHabit!.totalCount)!))
+		userHabitCount.text = String(selectedHabit!.userCount)
+		}
+	
+	@IBAction func minusButton(_ sender: Any) {
+		do {
+			try realm.write {
+				if selectedHabit!.userCount <= 0 {
+					
+				} else {
+					selectedHabit!.userCount -= 1
+				}
+			}
+		} catch {
+			print(error)
+		}
+		habitProgress.progress = Float(Float(Float(selectedHabit!.userCount)/Float(selectedHabit!.totalCount)!))
+		userHabitCount.text = String(selectedHabit!.userCount)
+		
+	}
 	
 	@IBAction func cancelButton(_ sender: Any) {
 		self.navigationController?.popToRootViewController(animated: true)

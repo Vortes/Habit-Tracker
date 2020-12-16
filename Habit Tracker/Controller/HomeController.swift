@@ -89,9 +89,6 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//		try! realm.write {
-//			habitData?[indexPath.section].progress += 1.1
-//		}
 		performSegue(withIdentifier: "habitDetails", sender: self)
     }
 	
@@ -130,7 +127,7 @@ extension HomeController: CreateGoalDelegate {
 		
 		let newHabit = Habit()
 		newHabit.title = name
-		newHabit.detail = count
+		newHabit.totalCount = count
 
 		save(habit: newHabit)
 		tableView.reloadData()
@@ -158,7 +155,7 @@ class tableViewCell: SwipeTableViewCell {
 	
 	func updateUI() {
 		habitName?.text = habit?.title
-		habitCount?.text = habit?.detail
+		habitCount?.text = habit?.totalCount
 	}
 	
 }
