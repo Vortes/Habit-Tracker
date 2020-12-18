@@ -20,11 +20,6 @@ class StatViewController: UIViewController {
 		BarChartDataEntry(x: 4.0, y: 8.0),
 		BarChartDataEntry(x: 5.0, y: 5.0),
 		BarChartDataEntry(x: 6.0, y: 6.0),
-		BarChartDataEntry(x: 7.0, y: 8.0),
-		BarChartDataEntry(x: 8.0, y: 5.0),
-		BarChartDataEntry(x: 9.0, y: 6.0),
-		BarChartDataEntry(x: 10.0, y: 8.0),
-		BarChartDataEntry(x: 11.0, y: 5.0),
 	]
 	
     override func viewDidLoad() {
@@ -42,12 +37,22 @@ extension StatViewController: ChartViewDelegate {
 	
 	func setData() {
 		let set1 = BarChartDataSet(entries: yvalues, label: "chart")
-		set1.colors = ChartColorTemplates.pastel()
 		
 		let data = BarChartData(dataSet: set1)
+		
+		let yAxis = barChartView.leftAxis
+		let xAxis = barChartView.xAxis
+		
+		yAxis.labelTextColor = .black
+		yAxis.drawAxisLineEnabled = false
+		yAxis.drawGridLinesEnabled = false
+		xAxis.drawAxisLineEnabled = false
+		
 		barChartView.xAxis.labelPosition = .bottom
 		barChartView.rightAxis.enabled = false
 		barChartView.data = data
+		barChartView.drawBarShadowEnabled = true
+		barChartView.layer.cornerRadius = 10
 	}
 	
 }
