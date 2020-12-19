@@ -35,12 +35,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yRg-lw-UJv">
-                                <rect key="frame" x="17" y="44" width="380" height="272"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yRg-lw-UJv">
+                                <rect key="frame" x="17" y="84" width="380" height="721"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <rect key="contentStretch" x="0.0" y="0.14999999999999999" width="1" height="1"/>
                                 <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="T A S K S  📖" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vr5-aW-wkO">
-                                    <rect key="frame" x="0.0" y="0.0" width="380" height="108"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="380" height="92"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="28"/>
                                     <nil key="textColor"/>
@@ -48,7 +49,7 @@
                                 </label>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="habitName" textLabel="lyX-OE-eXN" detailTextLabel="HYy-54-aET" rowHeight="103" style="IBUITableViewCellStyleValue1" id="8Bl-hx-Pkt" customClass="tableViewCell" customModule="Habit_Tracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="136" width="380" height="103"/>
+                                        <rect key="frame" x="0.0" y="120" width="380" height="103"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Bl-hx-Pkt" id="VN6-yL-yem">
                                             <rect key="frame" x="0.0" y="0.0" width="380" height="103"/>
@@ -76,16 +77,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feQ-ba-6lM">
-                                <rect key="frame" x="139" y="798" width="137" height="64"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="43"/>
-                                <state key="normal" title="+">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="createNewGoal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q2O-2l-viC"/>
-                                </connections>
-                            </button>
                             <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="deno" translatesAutoresizingMaskIntoConstraints="NO" id="tBe-JJ-VtQ">
                                 <rect key="frame" x="-3" y="333" width="414" height="230"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -98,26 +89,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feQ-ba-6lM">
+                                <rect key="frame" x="159" y="772" width="90" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.3707177639" green="0.25714370609999998" blue="0.75468015669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="43"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="createNewGoal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q2O-2l-viC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="feQ-ba-6lM" secondAttribute="trailing" constant="138" id="44x-zq-gwc"/>
-                            <constraint firstItem="feQ-ba-6lM" firstAttribute="top" secondItem="yRg-lw-UJv" secondAttribute="bottom" constant="53" id="AEP-PE-4Pl"/>
-                            <constraint firstItem="feQ-ba-6lM" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="EAG-wl-xPW"/>
-                            <constraint firstItem="feQ-ba-6lM" firstAttribute="top" secondItem="yRg-lw-UJv" secondAttribute="bottom" constant="53" id="G9d-Pe-9j5"/>
-                            <constraint firstItem="feQ-ba-6lM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="139" id="GlZ-7G-bM3"/>
-                            <constraint firstItem="yRg-lw-UJv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="17" id="QuP-md-8v2"/>
-                            <constraint firstItem="yRg-lw-UJv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="YgJ-SL-vWn"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yRg-lw-UJv" secondAttribute="trailing" constant="17" id="kzW-pz-Xrb"/>
-                            <constraint firstItem="yRg-lw-UJv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q5t-Wg-ceg"/>
-                        </constraints>
+                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="5QW-m1-apD"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="NO"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="addHabitLabel" destination="feQ-ba-6lM" id="IFd-mS-KPj"/>
                         <outlet property="deno_img" destination="tBe-JJ-VtQ" id="edp-7T-nYt"/>
                         <outlet property="deno_label" destination="zsR-fV-k7e" id="Q4K-jd-341"/>
                         <outlet property="tableView" destination="yRg-lw-UJv" id="Agt-R8-RnH"/>
@@ -127,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-186" y="128"/>
+            <point key="canvasLocation" x="-186.95652173913044" y="127.90178571428571"/>
         </scene>
         <!--Create Goal Controller-->
         <scene sceneID="VkR-BU-Wxp">
@@ -363,6 +356,9 @@
         <image name="deno" width="1985.5" height="2048"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
