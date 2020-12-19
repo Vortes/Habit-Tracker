@@ -8,6 +8,7 @@
 import UIKit
 import SwipeCellKit
 import RealmSwift
+import ChameleonFramework
 
 class HomeController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -25,7 +26,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     let cellSpacingHeight: CGFloat = 15
     let customRed = UIColor().customRed()
 	let customBlue = UIColor().customBlue()
-
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
@@ -139,8 +140,13 @@ extension UIColor {
         return UIColor(red: 0.607, green: 0.160, blue: 0.282, alpha: 1.00)
     }
     func customBlue() -> UIColor {
-        return UIColor(red: 0.509, green: 0.701, blue: 0.964, alpha: 1.00)
+        return UIColor(red: 0.636, green: 0.855, blue: 0.875, alpha: 1.00)
     }
+	
+	func complimentaryBlue() -> UIColor {
+		return ComplementaryFlatColorOf(customBlue())
+	}
+	
 }
 
 class tableViewCell: SwipeTableViewCell {

@@ -13,18 +13,36 @@ class HabitDetailController: UIViewController {
 	@IBOutlet weak var habitName: UILabel!
 	@IBOutlet weak var habitCount: UILabel!
 	@IBOutlet weak var userHabitCount: UILabel!
+	@IBOutlet weak var addLabel: UIButton!
+	@IBOutlet weak var minusLabel: UIButton!
+	@IBOutlet weak var slashLabel: UILabel!
+	
 
 	var habitData = Habit()
 	let habitDetails = HabitDetail()
 	let realm = try! Realm()
 	var selectedHabit: Habit?
 	let shapeLayer = CAShapeLayer()
+	
+	let customRed = UIColor().customRed()
+	let customBlue = UIColor().customBlue()
+	let complimentaryBlue = UIColor().complimentaryBlue()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		view.center = CGPoint(x: view.frame.size.width / 2,
 							  y: view.frame.size.height / 2.5)
+		
+		view.backgroundColor = customBlue
+		
+		userHabitCount.textColor = complimentaryBlue
+		habitName.textColor = complimentaryBlue
+		habitCount.textColor = complimentaryBlue
+		slashLabel.textColor = complimentaryBlue
+		addLabel.tintColor = complimentaryBlue
+		minusLabel.tintColor = complimentaryBlue
+		
 		
 		userHabitCount.text = String(selectedHabit!.userCount)
 		habitName.text = selectedHabit!.title
@@ -44,7 +62,7 @@ class HabitDetailController: UIViewController {
 	
 		// Progress Layer
 		shapeLayer.path = circularPath.cgPath
-		shapeLayer.strokeColor = UIColor.green.cgColor
+		shapeLayer.strokeColor = UIColor().complimentaryBlue().cgColor
 		shapeLayer.lineWidth = 10
 		shapeLayer.fillColor = UIColor.clear.cgColor
 		shapeLayer.lineCap = .round
@@ -110,3 +128,4 @@ class HabitDetailController: UIViewController {
 		dismiss(animated: true, completion: nil)
 	}
 }
+
