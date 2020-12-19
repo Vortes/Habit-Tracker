@@ -236,8 +236,15 @@
                                     <action selector="cancelButton:" destination="oO1-sx-Mfs" eventType="touchUpInside" id="f1T-zd-HTl"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="ebj-CK-rRM">
-                                <rect key="frame" x="93" y="341" width="228" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Habit Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQr-Hr-KO2">
+                                <rect key="frame" x="109" y="170" width="197" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="35"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="ebj-CK-rRM">
+                                <rect key="frame" x="93" y="397" width="228" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bN-CR-Oww">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="48"/>
@@ -279,16 +286,13 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Habit Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQr-Hr-KO2">
-                                <rect key="frame" x="113" y="132" width="197" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="35"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WtA-pG-IDm"/>
                         <color key="backgroundColor" red="0.15410047769546509" green="0.41306763887405396" blue="0.69063264131546021" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ebj-CK-rRM" firstAttribute="centerX" secondItem="Nib-xe-FH3" secondAttribute="centerX" id="LCO-69-asT"/>
+                            <constraint firstItem="ebj-CK-rRM" firstAttribute="centerY" secondItem="Nib-xe-FH3" secondAttribute="centerY" id="QcB-EG-fcH"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NB8-hk-2eP"/>
                     <connections>
@@ -350,6 +354,11 @@
             <point key="canvasLocation" x="1478.2608695652175" y="496.875"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="vOQ-LE-sN0">
+            <size key="intrinsicContentSize" width="193" height="33.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="deno" width="1985.5" height="2048"/>
         <systemColor name="linkColor">

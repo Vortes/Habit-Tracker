@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import SAConfettiView
 
 class HabitDetailController: UIViewController {
 	
@@ -27,9 +28,15 @@ class HabitDetailController: UIViewController {
 	let customRed = UIColor().customRed()
 	let customBlue = UIColor().customBlue()
 	let complimentaryBlue = UIColor().complimentaryBlue()
+	
+	var confettiView: SAConfettiView!
+	
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		confettiView = SAConfettiView(frame: self.view.bounds)
+		confettiView.isUserInteractionEnabled = false
 		
 		view.center = CGPoint(x: view.frame.size.width / 2,
 							  y: view.frame.size.height / 2.5)
@@ -75,6 +82,7 @@ class HabitDetailController: UIViewController {
 		shapeLayer.strokeEnd = percentage
 		
 		view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+//		confettiView.stopConfetti()
     }
 	
 	@objc func handleTap() {}
@@ -82,8 +90,13 @@ class HabitDetailController: UIViewController {
 	@IBAction func addButton(_ sender: Any) {
 		do {
 			try realm.write {
-				if selectedHabit!.userCount == Int(selectedHabit!.totalCount) {
+				if selectedHabit!.userCount == (Int(selectedHabit!.totalCount )! - 1) {
 					selectedHabit!.userCount += 1
+					view.addSubview(confettiView)
+					confettiView.startConfetti()
+					DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+						self.confettiView.stopConfetti()
+					}
 				} else {
 					selectedHabit!.userCount += 1
 				}
