@@ -83,7 +83,10 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID) as! tableViewCell
 		cell.delegate = self
         cell.backgroundColor = customBlue
-        cell.layer.cornerRadius = 10
+        cell.layer.cornerRadius = 30
+		cell.layer.shadowOffset = CGSize(width: 1, height: 2)
+		cell.layer.shadowOpacity = 0.23
+		cell.layer.shadowRadius = 3
 		cell.habit = habitData?[indexPath.section]
 		
         return cell
