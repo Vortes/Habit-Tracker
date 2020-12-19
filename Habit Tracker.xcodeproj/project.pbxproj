@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A901D0E039C980AC95F0C8D7 /* Pods_Habit_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8756683383D4C9792664729A /* Pods_Habit_Tracker.framework */; };
 		E7124259257D7F3E00A94015 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7124258257D7F3E00A94015 /* Habit.swift */; };
+		E7131FE6258E81EA00D2A500 /* HabitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7131FE4258E81EA00D2A500 /* HabitCell.swift */; };
+		E7131FE7258E81EA00D2A500 /* HabitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7131FE5258E81EA00D2A500 /* HabitCell.xib */; };
 		E751E3B3257F4B26008BEB5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E751E3B2257F4B26008BEB5F /* Assets.xcassets */; };
 		E7631409258811A5009D68C4 /* HabitDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7631408258811A5009D68C4 /* HabitDetail.swift */; };
 		E7631413258842D5009D68C4 /* HabitDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7631412258842D5009D68C4 /* HabitDetailController.swift */; };
@@ -27,6 +29,8 @@
 		8756683383D4C9792664729A /* Pods_Habit_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habit_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		963D75F57BD073991C15C9B7 /* Pods-Habit Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habit Tracker.release.xcconfig"; path = "Target Support Files/Pods-Habit Tracker/Pods-Habit Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		E7124258257D7F3E00A94015 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		E7131FE4258E81EA00D2A500 /* HabitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCell.swift; sourceTree = "<group>"; };
+		E7131FE5258E81EA00D2A500 /* HabitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitCell.xib; sourceTree = "<group>"; };
 		E751E3B2257F4B26008BEB5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../../Downloads/AppIcons/Assets.xcassets; sourceTree = "<group>"; };
 		E7631408258811A5009D68C4 /* HabitDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetail.swift; sourceTree = "<group>"; };
 		E7631412258842D5009D68C4 /* HabitDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailController.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				E7DFCF52256DF67800854EF4 /* Main.storyboard */,
+				E7131FE4258E81EA00D2A500 /* HabitCell.swift */,
+				E7131FE5258E81EA00D2A500 /* HabitCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -199,6 +205,7 @@
 			files = (
 				E7DFCF59256DF67900854EF4 /* LaunchScreen.storyboard in Resources */,
 				E751E3B3257F4B26008BEB5F /* Assets.xcassets in Resources */,
+				E7131FE7258E81EA00D2A500 /* HabitCell.xib in Resources */,
 				E7DFCF54256DF67800854EF4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,6 +267,7 @@
 				E7631413258842D5009D68C4 /* HabitDetailController.swift in Sources */,
 				E787F0B9258AAA35001DC9EC /* StatViewController.swift in Sources */,
 				E7DFCF4F256DF67800854EF4 /* SceneDelegate.swift in Sources */,
+				E7131FE6258E81EA00D2A500 /* HabitCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
