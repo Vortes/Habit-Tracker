@@ -15,6 +15,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
 	@IBOutlet weak var deno_label: UILabel!
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var deno_img: UIImageView!
+	@IBOutlet weak var addHabitLabel: UIButton!
 	
 	let realm = try! Realm()
 	
@@ -23,17 +24,36 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
 	let impactHard = UIImpactFeedbackGenerator(style: .heavy)
 	let impactMedium = UIImpactFeedbackGenerator(style: .medium)
     let cellReuseID = "habitName"
-    let cellSpacingHeight: CGFloat = 15
+    let cellSpacingHeight: CGFloat = 10
     let customRed = UIColor().customRed()
 	let customBlue = UIColor().customBlue()
+	let complimentaryBlue = UIColor().complimentaryBlue()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+		tableView.backgroundColor = customBlue
+		tableView.layer.cornerRadius = 30
+		tableView.clipsToBounds = false
+		tableView.layer.masksToBounds = false
+		tableView.layer.shadowColor = UIColor.darkGray.cgColor
+		tableView.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+		tableView.layer.shadowOpacity = 0.35
+		tableView.layer.shadowRadius = 3
 		print(Realm.Configuration.defaultConfiguration.fileURL!)
+		
 		loadItems()
     }
+	
+	override func viewDidLayoutSubviews() {
+		addHabitLabel.layer.cornerRadius = 0.5 * addHabitLabel.bounds.size.width
+		addHabitLabel.clipsToBounds = true
+		addHabitLabel.layer.shadowColor = UIColor.darkGray.cgColor
+		addHabitLabel.layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
+		addHabitLabel.layer.shadowOpacity = 1.0
+		addHabitLabel.layer.shadowRadius = 10
+	}
 
     @IBAction func createNewGoal(_ sender: Any) {
         let goalVC = storyboard?.instantiateViewController(withIdentifier: cellReuseID) as! CreateGoalController
@@ -82,7 +102,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID) as! tableViewCell
 		cell.delegate = self
-        cell.backgroundColor = customBlue
+        cell.backgroundColor = complimentaryBlue
         cell.layer.cornerRadius = 10
 		cell.habit = habitData?[indexPath.section]
 		
