@@ -11,6 +11,7 @@ import Charts
 class StatViewController: UIViewController {
 	
 	@IBOutlet weak var barChartView: BarChartView!
+	open var barWidth = Double(0.85)
 	
 	let yvalues: [BarChartDataEntry] = [
 		BarChartDataEntry(x: 0.0, y: 6.0),
@@ -39,6 +40,7 @@ extension StatViewController: ChartViewDelegate {
 		let set1 = BarChartDataSet(entries: yvalues, label: "chart")
 		
 		let data = BarChartData(dataSet: set1)
+		data.barWidth = Double(0.55)
 		
 		let yAxis = barChartView.leftAxis
 		let xAxis = barChartView.xAxis

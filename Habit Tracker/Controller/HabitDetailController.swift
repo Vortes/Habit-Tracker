@@ -13,20 +13,53 @@ class HabitDetailController: UIViewController {
 	@IBOutlet weak var habitName: UILabel!
 	@IBOutlet weak var habitCount: UILabel!
 	@IBOutlet weak var userHabitCount: UILabel!
-	@IBOutlet weak var habitProgress: UIProgressView!
 
 	var habitData = Habit()
 	let habitDetails = HabitDetail()
 	let realm = try! Realm()
 	var selectedHabit: Habit?
-	
+	let shapeLayer = CAShapeLayer()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		view.center = CGPoint(x: view.frame.size.width / 2,
+							  y: view.frame.size.height / 2.5)
+		
 		userHabitCount.text = String(selectedHabit!.userCount)
 		habitName.text = selectedHabit!.title
 		habitCount.text = selectedHabit!.totalCount
-		habitProgress.progress = Float(Float(Float(selectedHabit!.userCount)/Float(selectedHabit!.totalCount)!))
+		
+		let circularPath = UIBezierPath(arcCenter: .zero, radius: 150, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
+		
+		// Track Layer
+		let trackLayer = CAShapeLayer()
+		trackLayer.path = circularPath.cgPath
+		trackLayer.strokeColor = UIColor.lightGray.cgColor
+		trackLayer.lineWidth = 10
+		trackLayer.fillColor = UIColor.clear.cgColor
+		trackLayer.lineCap = .round
+		trackLayer.position = view.center
+		view.layer.addSublayer(trackLayer)
+	
+		// Progress Layer
+		shapeLayer.path = circularPath.cgPath
+		shapeLayer.strokeColor = UIColor.green.cgColor
+		shapeLayer.lineWidth = 10
+		shapeLayer.fillColor = UIColor.clear.cgColor
+		shapeLayer.lineCap = .round
+		shapeLayer.strokeEnd = 0
+		shapeLayer.position = view.center
+		shapeLayer.transform = CATransform3DMakeRotation(-CGFloat.pi/2, 0, 0, 1)
+		
+		view.layer.addSublayer(shapeLayer)
+		let percentage = CGFloat(Float(Float(Float(self.selectedHabit!.userCount)/Float(self.selectedHabit!.totalCount)!)))
+		shapeLayer.strokeEnd = percentage
+		
+		view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
     }
+	
+	@objc func handleTap() {}
 	
 	@IBAction func addButton(_ sender: Any) {
 		do {
@@ -41,7 +74,12 @@ class HabitDetailController: UIViewController {
 			print(error)
 		}
 		
-		habitProgress.progress = Float(Float(Float(selectedHabit!.userCount)/Float(selectedHabit!.totalCount)!))
+		let percentage = CGFloat(Float(Float(Float(self.selectedHabit!.userCount)/Float(self.selectedHabit!.totalCount)!)))
+		
+		DispatchQueue.main.async {
+			self.shapeLayer.strokeEnd = percentage
+		}
+		
 		userHabitCount.text = String(selectedHabit!.userCount)
 		}
 	
@@ -56,7 +94,13 @@ class HabitDetailController: UIViewController {
 		} catch {
 			print(error)
 		}
-		habitProgress.progress = Float(Float(Float(selectedHabit!.userCount)/Float(selectedHabit!.totalCount)!))
+		
+		let percentage = CGFloat(Float(Float(Float(self.selectedHabit!.userCount)/Float(self.selectedHabit!.totalCount)!)))
+		
+		DispatchQueue.main.async {
+			self.shapeLayer.strokeEnd = percentage
+		}
+		
 		userHabitCount.text = String(selectedHabit!.userCount)
 		
 	}

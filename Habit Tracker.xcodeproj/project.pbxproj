@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,7 @@
 		E7DFCF54256DF67800854EF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DFCF52256DF67800854EF4 /* Main.storyboard */; };
 		E7DFCF59256DF67900854EF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DFCF57256DF67900854EF4 /* LaunchScreen.storyboard */; };
 		E7DFCF70256E1C9F00854EF4 /* CreateGoalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFCF6F256E1C9F00854EF4 /* CreateGoalController.swift */; };
+		E7E2593F258D5B3F00A4B9BC /* UICircularProgressRing in Frameworks */ = {isa = PBXBuildFile; productRef = E7E2593E258D5B3F00A4B9BC /* UICircularProgressRing */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7E2593F258D5B3F00A4B9BC /* UICircularProgressRing in Frameworks */,
 				A901D0E039C980AC95F0C8D7 /* Pods_Habit_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,6 +150,9 @@
 			dependencies = (
 			);
 			name = "Habit Tracker";
+			packageProductDependencies = (
+				E7E2593E258D5B3F00A4B9BC /* UICircularProgressRing */,
+			);
 			productName = "Habit Tracker";
 			productReference = E7DFCF49256DF67800854EF4 /* Habit Tracker.app */;
 			productType = "com.apple.product-type.application";
@@ -175,6 +180,9 @@
 				Base,
 			);
 			mainGroup = E7DFCF40256DF67800854EF4;
+			packageReferences = (
+				E7E2593D258D5B3F00A4B9BC /* XCRemoteSwiftPackageReference "UICircularProgressRing" */,
+			);
 			productRefGroup = E7DFCF4A256DF67800854EF4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -455,6 +463,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E7E2593D258D5B3F00A4B9BC /* XCRemoteSwiftPackageReference "UICircularProgressRing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/luispadron/UICircularProgressRing.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E7E2593E258D5B3F00A4B9BC /* UICircularProgressRing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7E2593D258D5B3F00A4B9BC /* XCRemoteSwiftPackageReference "UICircularProgressRing" */;
+			productName = UICircularProgressRing;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E7DFCF41256DF67800854EF4 /* Project object */;
 }
