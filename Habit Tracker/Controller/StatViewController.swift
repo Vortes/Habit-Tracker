@@ -8,13 +8,63 @@
 import SwiftUI
 
 struct SecondView: View {
-  var body: some View {
-	  VStack {
-		  Text("Second View").font(.system(size: 36))
-		  Text("Loaded by SecondView").font(.system(size: 14))
-	  }
-  }
+	
+	@State var pickerSelectedItem = 0
+	
+	@State var dataPoints: [[CGFloat]] = [
+		[50, 100, 150],
+		[100, 50, 80],
+		[20, 40, 60],
+	]
+	
+	var body: some View {
+		ZStack {
+			VStack {
+				Text("Deno Belives In You!")
+					.font(.system(size: 36))
+					.fontWeight(.bold)
+			
+				
+				Picker(selection: $pickerSelectedItem, label: Text("")) {
+					Text("Week").tag(0)
+					Text("Month").tag(1)
+					Text("Year").tag(2)
+				}.pickerStyle(SegmentedPickerStyle())
+				.padding(.horizontal, 24)
+				
+				HStack (spacing: 16) {
+					BarView(value: dataPoints[pickerSelectedItem][0])
+					BarView(value: dataPoints[pickerSelectedItem][1])
+					BarView(value: dataPoints[pickerSelectedItem][0])
+					BarView(value: dataPoints[pickerSelectedItem][2])
+					BarView(value: dataPoints[pickerSelectedItem][1])
+					BarView(value: dataPoints[pickerSelectedItem][0])
+					BarView(value: dataPoints[pickerSelectedItem][2])
+
+				}.padding(.top, 24)
+				.animation(.default)
+			}
+		}
+	}
 }
+
+struct BarView: View {
+	
+	var value: CGFloat
+	
+	var body: some View {
+		VStack {
+			ZStack (alignment:.bottom) {
+				Capsule().frame(width: 30, height: 200)
+					.foregroundColor(.gray)
+				Capsule().frame(width: 30, height: value)
+					.foregroundColor(.blue)
+			}
+			Text("Mo").padding(.top, 8)
+		}
+	}
+}
+
 
 class StatViewController: UIHostingController<SecondView> {
 
