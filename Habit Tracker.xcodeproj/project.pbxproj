@@ -14,6 +14,7 @@
 		E751E3B3257F4B26008BEB5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E751E3B2257F4B26008BEB5F /* Assets.xcassets */; };
 		E7631409258811A5009D68C4 /* HabitDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7631408258811A5009D68C4 /* HabitDetail.swift */; };
 		E7631413258842D5009D68C4 /* HabitDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7631412258842D5009D68C4 /* HabitDetailController.swift */; };
+		E764113C259BF0C400429F8B /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E764113B259BF0C400429F8B /* test.swift */; };
 		E787F0B9258AAA35001DC9EC /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E787F0B8258AAA35001DC9EC /* StatViewController.swift */; };
 		E7DFCF4D256DF67800854EF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFCF4C256DF67800854EF4 /* AppDelegate.swift */; };
 		E7DFCF4F256DF67800854EF4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DFCF4E256DF67800854EF4 /* SceneDelegate.swift */; };
@@ -34,6 +35,7 @@
 		E751E3B2257F4B26008BEB5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../../Downloads/AppIcons/Assets.xcassets; sourceTree = "<group>"; };
 		E7631408258811A5009D68C4 /* HabitDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetail.swift; sourceTree = "<group>"; };
 		E7631412258842D5009D68C4 /* HabitDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailController.swift; sourceTree = "<group>"; };
+		E764113B259BF0C400429F8B /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		E787F0B8258AAA35001DC9EC /* StatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
 		E7DFCF49256DF67800854EF4 /* Habit Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Habit Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DFCF4C256DF67800854EF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				E7DFCF50256DF67800854EF4 /* HomeController.swift */,
 				E7631412258842D5009D68C4 /* HabitDetailController.swift */,
 				E787F0B8258AAA35001DC9EC /* StatViewController.swift */,
+				E764113B259BF0C400429F8B /* test.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				E7DFCF70256E1C9F00854EF4 /* CreateGoalController.swift in Sources */,
 				E7DFCF51256DF67800854EF4 /* HomeController.swift in Sources */,
 				E7124259257D7F3E00A94015 /* Habit.swift in Sources */,
+				E764113C259BF0C400429F8B /* test.swift in Sources */,
 				E7631409258811A5009D68C4 /* HabitDetail.swift in Sources */,
 				E7DFCF4D256DF67800854EF4 /* AppDelegate.swift in Sources */,
 				E7631413258842D5009D68C4 /* HabitDetailController.swift in Sources */,

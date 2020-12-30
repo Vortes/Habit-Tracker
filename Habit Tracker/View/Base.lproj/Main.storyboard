@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GW4-Oa-Dwk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GW4-Oa-Dwk">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -98,6 +99,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywg-sM-Z5y">
+                                <rect key="frame" x="269" y="789" width="97" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="55"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="chart.bar.fill" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="stat:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j4G-zr-dLq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -120,14 +133,16 @@
                     <connections>
                         <outlet property="deno_img" destination="tBe-JJ-VtQ" id="edp-7T-nYt"/>
                         <outlet property="deno_label" destination="zsR-fV-k7e" id="Q4K-jd-341"/>
+                        <outlet property="pieChart" destination="ywg-sM-Z5y" id="2ff-lQ-Dh0"/>
                         <outlet property="tableView" destination="yRg-lw-UJv" id="Agt-R8-RnH"/>
                         <segue destination="Xyx-yl-B07" kind="presentation" identifier="goToCreateView" id="XN3-NG-k8p"/>
                         <segue destination="oO1-sx-Mfs" kind="presentation" identifier="habitDetails" id="pQD-ct-YDO"/>
+                        <segue destination="nfq-19-jKu" kind="presentation" id="7zp-Mb-49m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-186" y="128"/>
+            <point key="canvasLocation" x="-186.95652173913044" y="127.90178571428571"/>
         </scene>
         <!--Create Goal Controller-->
         <scene sceneID="VkR-BU-Wxp">
@@ -240,6 +255,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjY-Ep-D39" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="734.78260869565224" y="-199.55357142857142"/>
+        </scene>
+        <!--Test-->
+        <scene sceneID="p5w-Qh-VuQ">
+            <objects>
+                <viewController storyboardIdentifier="test" id="nfq-19-jKu" customClass="test" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pNP-lc-bSm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvp-NE-m5b">
+                                <rect key="frame" x="190" y="713" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="cancelButton:" destination="nfq-19-jKu" eventType="touchUpInside" id="gyE-zP-evF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tFR-BI-ggZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uYa-CC-KmU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uf8-A0-5w6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-187" y="911"/>
         </scene>
         <!--Habit Detail Controller-->
         <scene sceneID="ESw-LE-eeF">
@@ -361,6 +402,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="chart.bar.fill" catalog="system" width="128" height="92"/>
         <image name="deno" width="1985.5" height="2048"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -81,8 +81,6 @@ class HabitDetailController: UIViewController {
 		let percentage = CGFloat(Float(Float(Float(self.selectedHabit!.userCount)/Float(self.selectedHabit!.totalCount)!)))
 		shapeLayer.strokeEnd = percentage
 		
-		view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
-//		confettiView.stopConfetti()
     }
 	
 	@objc func handleTap() {}

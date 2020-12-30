@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+let complimentaryBlue = UIColor().complimentaryBlue()
+
 struct SecondView: View {
 	
 	@State var pickerSelectedItem = 0
@@ -17,11 +19,16 @@ struct SecondView: View {
 		[20, 40, 60],
 	]
 	
+	let customBlue = UIColor().customBlue()
+	
 	var body: some View {
 		ZStack {
+			Color(customBlue)
+				.edgesIgnoringSafeArea(.all)
 			VStack {
 				Text("Deno Belives In You!")
 					.font(.system(size: 36))
+					.foregroundColor(Color(complimentaryBlue))
 					.fontWeight(.bold)
 			
 				
@@ -32,21 +39,20 @@ struct SecondView: View {
 				}.pickerStyle(SegmentedPickerStyle())
 				.padding(.horizontal, 24)
 				
-				HStack (spacing: 16) {
-					BarView(value: dataPoints[pickerSelectedItem][0])
-					BarView(value: dataPoints[pickerSelectedItem][1])
-					BarView(value: dataPoints[pickerSelectedItem][0])
-					BarView(value: dataPoints[pickerSelectedItem][2])
-					BarView(value: dataPoints[pickerSelectedItem][1])
-					BarView(value: dataPoints[pickerSelectedItem][0])
-					BarView(value: dataPoints[pickerSelectedItem][2])
-
+				HStack (spacing: 5) {
+						BarView(value: dataPoints[pickerSelectedItem][0])
+						BarView(value: dataPoints[pickerSelectedItem][1])
+						BarView(value: dataPoints[pickerSelectedItem][0])
+						BarView(value: dataPoints[pickerSelectedItem][2])
+						BarView(value: dataPoints[pickerSelectedItem][1])
+						BarView(value: dataPoints[pickerSelectedItem][0])
+						BarView(value: dataPoints[pickerSelectedItem][2])
+					}
 				}.padding(.top, 24)
 				.animation(.default)
 			}
 		}
 	}
-}
 
 struct BarView: View {
 	
@@ -58,7 +64,7 @@ struct BarView: View {
 				Capsule().frame(width: 30, height: 200)
 					.foregroundColor(.gray)
 				Capsule().frame(width: 30, height: value)
-					.foregroundColor(.blue)
+					.foregroundColor(Color(complimentaryBlue))
 			}
 			Text("Mo").padding(.top, 8)
 		}

@@ -15,6 +15,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
 	@IBOutlet weak var deno_label: UILabel!
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var deno_img: UIImageView!
+	@IBOutlet weak var pieChart: UIButton!
 	
 	let realm = try! Realm()
 	
@@ -42,6 +43,12 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         goalVC.habitDelegate = self
         present(goalVC, animated: true, completion: nil)
     }
+	
+	@IBAction func stat(_ sender: Any) {
+		let statVC = storyboard?.instantiateViewController(withIdentifier: "test") as! test
+		present(statVC, animated: true, completion: nil)
+	}
+	
     
     // Think of how ios settings have different sections w diff spacings
     func numberOfSections(in tableView: UITableView) -> Int {
