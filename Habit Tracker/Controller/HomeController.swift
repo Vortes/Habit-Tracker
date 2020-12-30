@@ -45,7 +45,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 	
 	@IBAction func stat(_ sender: Any) {
-		let statVC = storyboard?.instantiateViewController(withIdentifier: "test") as! test
+		let statVC = storyboard?.instantiateViewController(withIdentifier: "stats") as! StatViewController
 		present(statVC, animated: true, completion: nil)
 	}
 	

@@ -23,8 +23,8 @@ struct SecondView: View {
 	
 	var body: some View {
 		ZStack {
-			Color(customBlue)
-				.edgesIgnoringSafeArea(.all)
+//			Color(customBlue)
+//				.edgesIgnoringSafeArea(.all)
 			VStack {
 				Text("Deno Belives In You!")
 					.font(.system(size: 36))

@@ -137,7 +137,7 @@
                         <outlet property="tableView" destination="yRg-lw-UJv" id="Agt-R8-RnH"/>
                         <segue destination="Xyx-yl-B07" kind="presentation" identifier="goToCreateView" id="XN3-NG-k8p"/>
                         <segue destination="oO1-sx-Mfs" kind="presentation" identifier="habitDetails" id="pQD-ct-YDO"/>
-                        <segue destination="nfq-19-jKu" kind="presentation" id="7zp-Mb-49m"/>
+                        <segue destination="rzm-3k-hgs" kind="presentation" identifier="stats" id="ZIY-5s-LPo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -256,32 +256,6 @@
             </objects>
             <point key="canvasLocation" x="734.78260869565224" y="-199.55357142857142"/>
         </scene>
-        <!--Test-->
-        <scene sceneID="p5w-Qh-VuQ">
-            <objects>
-                <viewController storyboardIdentifier="test" id="nfq-19-jKu" customClass="test" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pNP-lc-bSm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvp-NE-m5b">
-                                <rect key="frame" x="190" y="713" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="cancelButton:" destination="nfq-19-jKu" eventType="touchUpInside" id="gyE-zP-evF"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="tFR-BI-ggZ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="uYa-CC-KmU"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Uf8-A0-5w6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-187" y="911"/>
-        </scene>
         <!--Habit Detail Controller-->
         <scene sceneID="ESw-LE-eeF">
             <objects>
@@ -301,24 +275,13 @@
                                     <action selector="cancelButton:" destination="oO1-sx-Mfs" eventType="touchUpInside" id="f1T-zd-HTl"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Habit Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQr-Hr-KO2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Habit Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQr-Hr-KO2">
                                 <rect key="frame" x="109" y="93" width="196.5" height="42"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="35"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMb-Wq-Otc">
-                                <rect key="frame" x="178" y="589" width="58" height="42"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                <state key="normal" title="Stats">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="rzm-3k-hgs" kind="presentation" id="6fx-96-3hB"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="ebj-CK-rRM">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="ebj-CK-rRM">
                                 <rect key="frame" x="76" y="316" width="262" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bN-CR-Oww">
@@ -366,10 +329,7 @@
                         <color key="backgroundColor" red="0.15410047769546509" green="0.41306763887405396" blue="0.69063264131546021" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="SQr-Hr-KO2" firstAttribute="centerX" secondItem="Nib-xe-FH3" secondAttribute="centerX" id="2IT-3G-Ghi"/>
-                            <constraint firstItem="NMb-Wq-Otc" firstAttribute="centerX" secondItem="Nib-xe-FH3" secondAttribute="centerX" id="4nx-PS-htG"/>
                             <constraint firstItem="ebj-CK-rRM" firstAttribute="top" secondItem="SQr-Hr-KO2" secondAttribute="bottom" constant="181" id="4rc-jw-ayN"/>
-                            <constraint firstItem="WtA-pG-IDm" firstAttribute="bottom" secondItem="NMb-Wq-Otc" secondAttribute="bottom" constant="177" id="G4m-pY-HSK"/>
-                            <constraint firstItem="NMb-Wq-Otc" firstAttribute="top" secondItem="ebj-CK-rRM" secondAttribute="bottom" constant="225" id="SZE-1g-O3Y"/>
                             <constraint firstItem="ebj-CK-rRM" firstAttribute="centerX" secondItem="Nib-xe-FH3" secondAttribute="centerX" id="kud-0k-bg5"/>
                         </constraints>
                     </view>
@@ -390,10 +350,10 @@
         <!--Stat View Controller-->
         <scene sceneID="M5i-ax-nc5">
             <objects>
-                <hostingController id="rzm-3k-hgs" customClass="StatViewController" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController"/>
+                <hostingController storyboardIdentifier="stats" id="rzm-3k-hgs" customClass="StatViewController" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ll-39-4Ke" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1671" y="497"/>
+            <point key="canvasLocation" x="-187" y="905"/>
         </scene>
     </scenes>
     <designables>
@@ -404,9 +364,6 @@
     <resources>
         <image name="chart.bar.fill" catalog="system" width="128" height="92"/>
         <image name="deno" width="1985.5" height="2048"/>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
