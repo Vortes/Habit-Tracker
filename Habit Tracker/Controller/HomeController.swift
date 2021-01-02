@@ -163,24 +163,6 @@ extension UIColor {
 	
 }
 
-//class tableViewCell: HabitCell {
-////	@IBOutlet weak var habitName: UILabel!
-////	@IBOutlet weak var habitCount: UILabel!
-//	var habit: Habit? {
-//		didSet {
-//			self.updateUI()
-//		}
-//	}
-//
-//	func updateUI() {
-//
-////		habitName?.text = habit?.title
-////		habitCount?.text = habit?.totalCount
-//	}
-//
-//}
-
-
 extension HomeController: SwipeTableViewCellDelegate {
 	func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
 		guard orientation == .right else { return nil }
@@ -205,12 +187,5 @@ extension HomeController: SwipeTableViewCellDelegate {
 
 		return [deleteAction]
 	}
-//
-//	func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
-//		var options = SwipeOptions()
-//		options.expansionStyle = .destructive
-//		options.transitionStyle = .border
-//		return options
-//	}
 	
 }
