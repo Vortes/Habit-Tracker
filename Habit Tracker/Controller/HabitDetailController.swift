@@ -24,6 +24,7 @@ class HabitDetailController: UIViewController {
 	let realm = try! Realm()
 	var selectedHabit: Habit?
 	let shapeLayer = CAShapeLayer()
+	let habitcell = HabitCell()
 	
 	let customRed = UIColor().customRed()
 	let customBlue = UIColor().customBlue()
@@ -85,6 +86,20 @@ class HabitDetailController: UIViewController {
 	
 	@objc func handleTap() {}
 	
+	func save(habit: Habit) {
+		do {
+			try realm.write {
+				realm.add(habit)
+			}
+		} catch {
+			print("saving error \(error)")
+		}
+	}
+	
+	func loadItems() {
+		habitData = realm.objects(Habit.self)
+	}
+	
 	@IBAction func addButton(_ sender: Any) {
 		do {
 			try realm.write {
@@ -104,6 +119,9 @@ class HabitDetailController: UIViewController {
 		}
 		
 		let percentage = CGFloat(Float(Float(Float(self.selectedHabit!.userCount)/Float(self.selectedHabit!.totalCount)!)))
+		
+		habitData.progress = Float(percentage)
+		save(habit: habitData)
 		
 		DispatchQueue.main.async {
 			self.shapeLayer.strokeEnd = percentage
@@ -131,6 +149,8 @@ class HabitDetailController: UIViewController {
 		}
 		
 		userHabitCount.text = String(selectedHabit!.userCount)
+		
+
 		
 	}
 	

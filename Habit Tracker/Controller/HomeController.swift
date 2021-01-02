@@ -32,6 +32,9 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+		
+		tableView.register(UINib(nibName: "HabitCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
+		
 		print(Realm.Configuration.defaultConfiguration.fileURL!)
 		loadItems()
     }
@@ -87,7 +90,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID) as! tableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell") as! HabitCell
 		cell.delegate = self
         cell.backgroundColor = customBlue
         cell.layer.cornerRadius = 30
@@ -95,6 +98,7 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
 		cell.layer.shadowOpacity = 0.23
 		cell.layer.shadowRadius = 3
 		cell.habit = habitData?[indexPath.section]
+		cell.selectionStyle = UITableViewCell.SelectionStyle.none
 		
         return cell
     }
@@ -159,22 +163,22 @@ extension UIColor {
 	
 }
 
-class tableViewCell: SwipeTableViewCell {
-	@IBOutlet weak var habitName: UILabel!
-	@IBOutlet weak var habitCount: UILabel!
-	
-	var habit: Habit? {
-		didSet {
-			self.updateUI()
-		}
-	}
-	
-	func updateUI() {
-		habitName?.text = habit?.title
-		habitCount?.text = habit?.totalCount
-	}
-	
-}
+//class tableViewCell: HabitCell {
+////	@IBOutlet weak var habitName: UILabel!
+////	@IBOutlet weak var habitCount: UILabel!
+//	var habit: Habit? {
+//		didSet {
+//			self.updateUI()
+//		}
+//	}
+//
+//	func updateUI() {
+//
+////		habitName?.text = habit?.title
+////		habitCount?.text = habit?.totalCount
+//	}
+//
+//}
 
 
 extension HomeController: SwipeTableViewCellDelegate {

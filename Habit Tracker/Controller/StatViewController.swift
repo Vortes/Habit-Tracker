@@ -26,28 +26,35 @@ struct SecondView: View {
 //			Color(customBlue)
 //				.edgesIgnoringSafeArea(.all)
 			VStack {
-				Text("Deno Belives In You!")
-					.font(.system(size: 36))
-					.foregroundColor(Color(complimentaryBlue))
-					.fontWeight(.bold)
-			
+//				Text("Deno Belives In You!")
+//					.font(.system(size: 36))
+//					.foregroundColor(Color(complimentaryBlue))
+//					.fontWeight(.bold)
+//
+//
+//				Picker(selection: $pickerSelectedItem, label: Text("")) {
+//					Text("Week").tag(0)
+//					Text("Month").tag(1)
+//					Text("Year").tag(2)
+//				}.pickerStyle(SegmentedPickerStyle())
+//				.padding(.horizontal, 24)
 				
-				Picker(selection: $pickerSelectedItem, label: Text("")) {
-					Text("Week").tag(0)
-					Text("Month").tag(1)
-					Text("Year").tag(2)
-				}.pickerStyle(SegmentedPickerStyle())
-				.padding(.horizontal, 24)
+//				HStack (spacing: 5) {
+//						BarView(value: dataPoints[pickerSelectedItem][0])
+//						BarView(value: dataPoints[pickerSelectedItem][0])
+//						BarView(value: dataPoints[pickerSelectedItem][0])
+//						BarView(value: dataPoints[pickerSelectedItem][0])
+//						BarView(value: dataPoints[pickerSelectedItem][0])
+//						BarView(value: dataPoints[pickerSelectedItem][0])
+//						BarView(value: dataPoints[pickerSelectedItem][0])
+//					}
 				
-				HStack (spacing: 5) {
-						BarView(value: dataPoints[pickerSelectedItem][0])
-						BarView(value: dataPoints[pickerSelectedItem][1])
-						BarView(value: dataPoints[pickerSelectedItem][0])
-						BarView(value: dataPoints[pickerSelectedItem][2])
-						BarView(value: dataPoints[pickerSelectedItem][1])
-						BarView(value: dataPoints[pickerSelectedItem][0])
-						BarView(value: dataPoints[pickerSelectedItem][2])
-					}
+				HStack {
+					Checkerboard(rows: 16, columns: 16)
+						.fill(Color.red)
+						.frame(width: 300, height: 300)  
+				}
+				
 				}.padding(.top, 24)
 				.animation(.default)
 			}
@@ -71,6 +78,35 @@ struct BarView: View {
 	}
 }
 
+
+struct Checkerboard: Shape {
+	let rows: Int
+	let columns: Int
+
+	func path(in rect: CGRect) -> Path {
+		var path = Path()
+
+		// figure out how big each row/column needs to be
+		let rowSize = rect.height / CGFloat(rows)
+		let columnSize = rect.width / CGFloat(columns)
+
+		// loop over all rows and columns, making alternating squares colored
+		for row in 0 ..< rows {
+			for column in 0 ..< columns {
+				if (row + column).isMultiple(of: 2) {
+					// this square should be colored; add a rectangle here
+					let startX = columnSize * CGFloat(column)
+					let startY = rowSize * CGFloat(row)
+
+					let rect = CGRect(x: startX, y: startY, width: columnSize, height: rowSize)
+					path.addRect(rect)
+				}
+			}
+		}
+
+		return path
+	}
+}
 
 class StatViewController: UIHostingController<SecondView> {
 
