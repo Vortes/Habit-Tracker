@@ -13,6 +13,7 @@ class HabitCell: SwipeTableViewCell {
 	@IBOutlet weak var habitView: UIView!
 	@IBOutlet weak var habitXibName: UILabel!
 	@IBOutlet weak var habitProgress: UIProgressView!
+	@IBOutlet weak var slash: UILabel!
 	
 	@IBOutlet weak var userProgress: UILabel!
 	@IBOutlet weak var totalProgress: UILabel!
@@ -23,7 +24,10 @@ class HabitCell: SwipeTableViewCell {
 	
 	override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+		habitXibName.font = UIFont(name:"Helvetica Neue Bold",size:22)
+		userProgress.font = UIFont(name: "Helvetica Neue", size: 22)
+		totalProgress.font = UIFont(name: "Helvetica Neue", size: 22)
+		slash.font = UIFont(name: "Helvetica Neue", size: 22)
     }
 	
 	var habit: Habit? {

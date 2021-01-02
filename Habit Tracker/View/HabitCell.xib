@@ -16,39 +16,72 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqD-sf-zoh">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqD-sf-zoh">
                         <rect key="frame" x="16" y="11" width="145" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="145" id="Hl3-Co-JUX"/>
+                            <constraint firstAttribute="height" constant="21" id="Y95-UN-1X0"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dKH-AL-qKO">
+                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dKH-AL-qKO">
                         <rect key="frame" x="16" y="40" width="288" height="4"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="4" id="6uV-1v-hzH"/>
+                            <constraint firstAttribute="width" constant="288" id="Nr9-4w-KAa"/>
+                        </constraints>
                     </progressView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="/" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWE-8D-faH">
-                        <rect key="frame" x="236" y="11" width="5" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v3i-jP-5O5">
+                        <rect key="frame" x="175" y="11" width="58" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="58" id="Aqr-Rt-roP"/>
+                            <constraint firstAttribute="height" constant="21" id="bBb-wO-AKi"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v3i-jP-5O5">
-                        <rect key="frame" x="175" y="11" width="42" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyQ-Fb-DCE">
+                        <rect key="frame" x="259" y="11" width="51" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="51" id="XEi-Zf-0jP"/>
+                            <constraint firstAttribute="height" constant="21" id="hMt-VR-eer"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyQ-Fb-DCE">
-                        <rect key="frame" x="258" y="11" width="42" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="/" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWE-8D-faH">
+                        <rect key="frame" x="228" y="11" width="23" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="dDl-dv-QzU"/>
+                            <constraint firstAttribute="width" constant="15" id="yKh-MS-beq"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="v3i-jP-5O5" firstAttribute="leading" secondItem="mqD-sf-zoh" secondAttribute="trailing" constant="14" id="36O-2t-2LT"/>
+                    <constraint firstItem="dKH-AL-qKO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="471-bW-lxE"/>
+                    <constraint firstItem="dKH-AL-qKO" firstAttribute="top" secondItem="mqD-sf-zoh" secondAttribute="bottom" constant="8" symbolic="YES" id="60w-PN-8g0"/>
+                    <constraint firstItem="dKH-AL-qKO" firstAttribute="top" secondItem="LWE-8D-faH" secondAttribute="bottom" constant="8" symbolic="YES" id="MyP-wZ-dom"/>
+                    <constraint firstItem="xyQ-Fb-DCE" firstAttribute="leading" secondItem="LWE-8D-faH" secondAttribute="trailing" constant="8" id="N8c-Eb-pur"/>
+                    <constraint firstItem="mqD-sf-zoh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="NET-aS-Bjm"/>
+                    <constraint firstItem="LWE-8D-faH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="OCe-Bj-xDX"/>
+                    <constraint firstItem="v3i-jP-5O5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="bE1-fa-R9j"/>
+                    <constraint firstAttribute="trailing" secondItem="dKH-AL-qKO" secondAttribute="trailing" constant="16" id="fHs-2Q-zYw"/>
+                    <constraint firstItem="mqD-sf-zoh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="flt-md-QwT"/>
+                    <constraint firstItem="xyQ-Fb-DCE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="gmy-SU-54v"/>
+                    <constraint firstItem="LWE-8D-faH" firstAttribute="leading" secondItem="v3i-jP-5O5" secondAttribute="trailing" constant="3" id="guE-WF-14A"/>
+                    <constraint firstItem="dKH-AL-qKO" firstAttribute="top" secondItem="v3i-jP-5O5" secondAttribute="bottom" constant="8" symbolic="YES" id="jUu-LD-7un"/>
+                    <constraint firstAttribute="bottom" secondItem="dKH-AL-qKO" secondAttribute="bottom" constant="19" id="nhm-kS-kTd"/>
+                    <constraint firstAttribute="trailing" secondItem="xyQ-Fb-DCE" secondAttribute="trailing" constant="10" id="r53-3u-MQq"/>
+                    <constraint firstItem="dKH-AL-qKO" firstAttribute="top" secondItem="xyQ-Fb-DCE" secondAttribute="bottom" constant="8" symbolic="YES" id="uRN-WD-Qks"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
@@ -56,6 +89,7 @@
                 <outlet property="habitView" destination="H2p-sc-9uM" id="Cr4-QE-rxr"/>
                 <outlet property="habitXibName" destination="mqD-sf-zoh" id="mVn-p8-c7c"/>
                 <outlet property="progressBarXib" destination="dKH-AL-qKO" id="CjP-ai-XNh"/>
+                <outlet property="slash" destination="LWE-8D-faH" id="C4R-O9-ek5"/>
                 <outlet property="totalProgress" destination="xyQ-Fb-DCE" id="Emd-ug-bc7"/>
                 <outlet property="userProgress" destination="v3i-jP-5O5" id="I84-oA-WgQ"/>
             </connections>
