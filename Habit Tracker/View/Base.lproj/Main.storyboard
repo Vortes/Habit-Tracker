@@ -299,6 +299,21 @@
                                     <constraint firstAttribute="width" constant="262" id="zLI-gi-LfB"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fdf-Le-OuA">
+                                <rect key="frame" x="149" y="568" width="117" height="62"/>
+                                <color key="backgroundColor" red="0.19376453760000001" green="0.50850099329999998" blue="0.85232251879999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="XrR-gY-yLS"/>
+                                    <constraint firstAttribute="width" constant="117" id="lYJ-Nb-cmI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
+                                <state key="normal" title="Complete">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="completeButton:" destination="oO1-sx-Mfs" eventType="touchUpInside" id="MmZ-A0-EhG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WtA-pG-IDm"/>
                         <color key="backgroundColor" red="0.15410047769546509" green="0.41306763887405396" blue="0.69063264131546021" alpha="1" colorSpace="calibratedRGB"/>
@@ -306,7 +321,11 @@
                             <constraint firstItem="SQr-Hr-KO2" firstAttribute="centerX" secondItem="Nib-xe-FH3" secondAttribute="centerX" id="2IT-3G-Ghi"/>
                             <constraint firstItem="ebj-CK-rRM" firstAttribute="top" secondItem="SQr-Hr-KO2" secondAttribute="bottom" constant="181" id="2wK-ZI-Ebh"/>
                             <constraint firstItem="ebj-CK-rRM" firstAttribute="top" secondItem="SQr-Hr-KO2" secondAttribute="bottom" constant="181" id="4rc-jw-ayN"/>
+                            <constraint firstItem="WtA-pG-IDm" firstAttribute="bottom" secondItem="Fdf-Le-OuA" secondAttribute="bottom" constant="178" id="JeK-ve-j7C"/>
+                            <constraint firstItem="Fdf-Le-OuA" firstAttribute="leading" secondItem="WtA-pG-IDm" secondAttribute="leading" constant="149" id="Y8C-FE-C2a"/>
+                            <constraint firstItem="WtA-pG-IDm" firstAttribute="trailing" secondItem="Fdf-Le-OuA" secondAttribute="trailing" constant="148" id="ZaQ-z6-RP6"/>
                             <constraint firstItem="WtA-pG-IDm" firstAttribute="bottom" secondItem="ebj-CK-rRM" secondAttribute="bottom" constant="444" id="f5N-5G-XFx"/>
+                            <constraint firstItem="Fdf-Le-OuA" firstAttribute="top" secondItem="ebj-CK-rRM" secondAttribute="bottom" constant="204" id="gq1-Yb-R8N"/>
                             <constraint firstItem="ebj-CK-rRM" firstAttribute="centerX" secondItem="Nib-xe-FH3" secondAttribute="centerX" id="kud-0k-bg5"/>
                         </constraints>
                     </view>

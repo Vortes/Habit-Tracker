@@ -141,5 +141,34 @@ class HabitDetailController: UIViewController {
 //		self.navigationController?.popToRootViewController(animated: true)
 		dismiss(animated: true, completion: nil)
 	}
+	
+	@IBAction func completeButton(_ sender: Any) {
+		do {
+			try realm.write {
+				if selectedHabit!.userCount > (Int(selectedHabit!.totalCount )! - 1) {
+				} else {
+					let complete = ((Int(selectedHabit!.totalCount) ?? 0) - selectedHabit!.userCount)
+					selectedHabit!.userCount += complete
+					view.addSubview(confettiView)
+					confettiView.startConfetti()
+					DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+						self.confettiView.stopConfetti()
+					}
+				}
+			}
+		} catch {
+			print(error)
+		}
+		
+		let percentage = CGFloat(Float(Float(Float(self.selectedHabit!.userCount)/Float(self.selectedHabit!.totalCount)!)))
+		
+		DispatchQueue.main.async {
+			self.shapeLayer.strokeEnd = percentage
+		}
+		
+		userHabitCount.text = String(selectedHabit!.userCount)
+	}
+	
+	
 }
 
