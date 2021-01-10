@@ -41,6 +41,8 @@ class HabitCell: SwipeTableViewCell {
 		totalProgress?.text = habit?.totalCount
 		progressBarXib?.progress = habit?.progress ?? 0.0
 		userProgress?.text = String(habit?.userCount ?? 0)
+		print("here")
+		print(String(habit?.userCount ?? 0))
 	}
 
     override func setSelected(_ selected: Bool, animated: Bool) {

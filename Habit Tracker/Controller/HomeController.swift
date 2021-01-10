@@ -34,10 +34,17 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.dataSource = self
 		
 		tableView.register(UINib(nibName: "HabitCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
+		NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
 		
 		print(Realm.Configuration.defaultConfiguration.fileURL!)
 		loadItems()
     }
+	
+	@objc func loadList(notification: NSNotification){
+		//load data here
+		print("reloading")
+		self.tableView.reloadData()
+	}
 
     @IBAction func createNewGoal(_ sender: Any) {
         let goalVC = storyboard?.instantiateViewController(withIdentifier: cellReuseID) as! CreateGoalController
@@ -109,9 +116,11 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		let destinationVC = segue.destination as! HabitDetailController
+//		let cell = tableView.dequeueReusableCell(withIdentifier: "RetableView.dequeueReusableCell(withIdentifier: "ReusableCell") as! HabitCellusableCell") as! HabitCell
 		
 		if let indexPath = tableView.indexPathForSelectedRow {
 			destinationVC.selectedHabit = habitData?[indexPath.section]
+			destinationVC.cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell") as? HabitCell
 		}
 	}
 
@@ -178,6 +187,7 @@ extension HomeController: SwipeTableViewCellDelegate {
 				} catch {
 					print("error deleting \(error)")
 				}
+				print("reloading data...")
 				tableView.reloadData()
 			}
 		}
