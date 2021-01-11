@@ -25,7 +25,6 @@ class HabitDetailController: UIViewController {
 	var selectedHabit: Habit?
 	var cell: HabitCell?
 	let shapeLayer = CAShapeLayer()
-	let habitcell = HabitCell()
 	
 	let customRed = UIColor().customRed()
 	let customBlue = UIColor().customBlue()
@@ -92,8 +91,7 @@ class HabitDetailController: UIViewController {
 			try realm.write {
 				if selectedHabit!.userCount == (Int(selectedHabit!.totalCount )! - 1) {
 					selectedHabit!.userCount += 1
-					habitcell.habit = selectedHabit
-					habitcell.habitXibName?.text = String(selectedHabit?.userCount ?? 0)
+//					selectedHabit!.progress
 					view.addSubview(confettiView)
 					confettiView.startConfetti()
 					DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
@@ -110,6 +108,15 @@ class HabitDetailController: UIViewController {
 		}
 		
 		let percentage = CGFloat(Float(Float(Float(self.selectedHabit!.userCount)/Float(self.selectedHabit!.totalCount)!)))
+		
+		do {
+			try realm.write {
+				print(percentage)
+				selectedHabit?.progress = Float(percentage)
+			}
+		} catch {
+			print(error)
+		}
 		
 		DispatchQueue.main.async {
 			self.shapeLayer.strokeEnd = percentage
@@ -132,6 +139,15 @@ class HabitDetailController: UIViewController {
 		}
 		
 		let percentage = CGFloat(Float(Float(Float(self.selectedHabit!.userCount)/Float(self.selectedHabit!.totalCount)!)))
+		
+		do {
+			try realm.write {
+				print(percentage)
+				selectedHabit?.progress = Float(percentage)
+			}
+		} catch {
+			print(error)
+		}
 		
 		DispatchQueue.main.async {
 			self.shapeLayer.strokeEnd = percentage
@@ -168,10 +184,18 @@ class HabitDetailController: UIViewController {
 		}
 		
 		let percentage = CGFloat(Float(Float(Float(self.selectedHabit!.userCount)/Float(self.selectedHabit!.totalCount)!)))
-		
+		do {
+			try realm.write {
+				print(percentage)
+				selectedHabit?.progress = Float(percentage)
+			}
+		} catch {
+			print(error)
+		}
 		DispatchQueue.main.async {
 			self.shapeLayer.strokeEnd = percentage
 		}
+	
 		
 		userHabitCount.text = String(selectedHabit!.userCount)
 	}
