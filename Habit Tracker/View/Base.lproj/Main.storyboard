@@ -63,9 +63,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.84685784949202636" green="0.87188528689249822" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deno wants you to add a new habit!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsR-fV-k7e">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deno wants you to add a new habit!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsR-fV-k7e">
                                 <rect key="frame" x="42" y="535" width="324" height="97"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -92,8 +91,12 @@
                             <constraint firstItem="feQ-ba-6lM" firstAttribute="top" secondItem="yRg-lw-UJv" secondAttribute="bottom" constant="53" id="G9d-Pe-9j5"/>
                             <constraint firstItem="feQ-ba-6lM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="139" id="GlZ-7G-bM3"/>
                             <constraint firstItem="yRg-lw-UJv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="17" id="QuP-md-8v2"/>
+                            <constraint firstItem="zsR-fV-k7e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="42" id="W3E-ew-JyG"/>
                             <constraint firstItem="yRg-lw-UJv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="YgJ-SL-vWn"/>
+                            <constraint firstItem="zsR-fV-k7e" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="491" id="Z4Y-7Q-fPV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zsR-fV-k7e" secondAttribute="trailing" constant="48" id="ZcW-GF-73C"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yRg-lw-UJv" secondAttribute="trailing" constant="17" id="kzW-pz-Xrb"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="zsR-fV-k7e" secondAttribute="bottom" constant="230" id="oKU-2j-8o3"/>
                             <constraint firstItem="yRg-lw-UJv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q5t-Wg-ceg"/>
                         </constraints>
                     </view>
@@ -127,7 +130,9 @@
                                 <rect key="frame" x="300" y="39" width="94" height="33"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Cancel"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
                                 <connections>
                                     <action selector="Cancel:" destination="Xyx-yl-B07" eventType="touchUpInside" id="jDg-ba-pjU"/>
                                 </connections>
@@ -176,7 +181,7 @@
                                 <rect key="frame" x="94" y="673" width="226" height="70"/>
                                 <color key="backgroundColor" red="0.32318421754720777" green="0.50858143895057784" blue="0.89735019329896903" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="226" id="1d6-je-dq1"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="226" id="1d6-je-dq1"/>
                                     <constraint firstAttribute="height" constant="70" id="65k-ej-AUJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
@@ -191,7 +196,7 @@
                                 <rect key="frame" x="50" y="39" width="230" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="0zy-GJ-kvk"/>
-                                    <constraint firstAttribute="width" constant="230" id="56S-eM-Mtw"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="230" id="56S-eM-Mtw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="28"/>
                                 <nil key="textColor"/>
@@ -235,9 +240,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRI-Pa-llV">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRI-Pa-llV">
                                 <rect key="frame" x="20" y="35" width="135" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -304,7 +308,7 @@
                                 <color key="backgroundColor" red="0.19376453760000001" green="0.50850099329999998" blue="0.85232251879999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="XrR-gY-yLS"/>
-                                    <constraint firstAttribute="width" constant="117" id="lYJ-Nb-cmI"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="117" id="lYJ-Nb-cmI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
                                 <state key="normal" title="Complete">
@@ -321,12 +325,16 @@
                             <constraint firstItem="SQr-Hr-KO2" firstAttribute="centerX" secondItem="Nib-xe-FH3" secondAttribute="centerX" id="2IT-3G-Ghi"/>
                             <constraint firstItem="ebj-CK-rRM" firstAttribute="top" secondItem="SQr-Hr-KO2" secondAttribute="bottom" constant="181" id="2wK-ZI-Ebh"/>
                             <constraint firstItem="ebj-CK-rRM" firstAttribute="top" secondItem="SQr-Hr-KO2" secondAttribute="bottom" constant="181" id="4rc-jw-ayN"/>
+                            <constraint firstItem="bRI-Pa-llV" firstAttribute="leading" secondItem="WtA-pG-IDm" secondAttribute="leading" constant="20" id="7ea-Bx-HoA"/>
                             <constraint firstItem="WtA-pG-IDm" firstAttribute="bottom" secondItem="Fdf-Le-OuA" secondAttribute="bottom" constant="178" id="JeK-ve-j7C"/>
+                            <constraint firstItem="WtA-pG-IDm" firstAttribute="trailing" secondItem="bRI-Pa-llV" secondAttribute="trailing" constant="259" id="L4q-cI-bDM"/>
                             <constraint firstItem="Fdf-Le-OuA" firstAttribute="leading" secondItem="WtA-pG-IDm" secondAttribute="leading" constant="149" id="Y8C-FE-C2a"/>
                             <constraint firstItem="WtA-pG-IDm" firstAttribute="trailing" secondItem="Fdf-Le-OuA" secondAttribute="trailing" constant="148" id="ZaQ-z6-RP6"/>
+                            <constraint firstItem="SQr-Hr-KO2" firstAttribute="top" secondItem="bRI-Pa-llV" secondAttribute="bottom" constant="25" id="dY9-zJ-TLZ"/>
                             <constraint firstItem="WtA-pG-IDm" firstAttribute="bottom" secondItem="ebj-CK-rRM" secondAttribute="bottom" constant="444" id="f5N-5G-XFx"/>
                             <constraint firstItem="Fdf-Le-OuA" firstAttribute="top" secondItem="ebj-CK-rRM" secondAttribute="bottom" constant="204" id="gq1-Yb-R8N"/>
                             <constraint firstItem="ebj-CK-rRM" firstAttribute="centerX" secondItem="Nib-xe-FH3" secondAttribute="centerX" id="kud-0k-bg5"/>
+                            <constraint firstItem="bRI-Pa-llV" firstAttribute="top" secondItem="WtA-pG-IDm" secondAttribute="top" constant="35" id="llC-Hd-ltK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NB8-hk-2eP"/>
@@ -360,6 +368,9 @@
     <resources>
         <image name="chart.bar.fill" catalog="system" width="128" height="92"/>
         <image name="deno" width="1985.5" height="2048"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

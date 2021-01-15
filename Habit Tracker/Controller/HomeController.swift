@@ -116,7 +116,6 @@ class HomeController: UIViewController, UITableViewDataSource, UITableViewDelega
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		let destinationVC = segue.destination as! HabitDetailController
-//		let cell = tableView.dequeueReusableCell(withIdentifier: "RetableView.dequeueReusableCell(withIdentifier: "ReusableCell") as! HabitCellusableCell") as! HabitCell
 		
 		if let indexPath = tableView.indexPathForSelectedRow {
 			destinationVC.selectedHabit = habitData?[indexPath.section]
